@@ -23,7 +23,7 @@ Body:\n\n`;
 
 const DraftIssueCommand: SlashCommand = {
   name: "issue",
-  description: "Draft a GitHub issue",
+  description: "创建GitHub issue",
   run: async function* ({ input, llm, history, params }) {
     if (params?.repositoryUrl === undefined) {
       yield "This command requires a repository URL to be set in the config file.";

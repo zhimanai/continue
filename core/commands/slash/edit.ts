@@ -216,7 +216,7 @@ function lineToBeIgnored(line: string, isFirstLine: boolean = false): boolean {
 
 const EditSlashCommand: SlashCommand = {
   name: "edit",
-  description: "Edit selected code",
+  description: "编辑选中的代码",
   run: async function* ({ ide, llm, input, history, contextItems, params }) {
     let contextItemToEdit = contextItems.find(
       (item: ContextItemWithId) =>
@@ -229,7 +229,7 @@ const EditSlashCommand: SlashCommand = {
     }
 
     if (!contextItemToEdit) {
-      yield "Please highlight the code you want to edit, then press `cmd/ctrl+shift+L` to add it to chat";
+      yield "请选中你想要引用的代码，然后按组合键 `cmd/ctrl+shift+L` 把代码加入对话中";
       return;
     }
 

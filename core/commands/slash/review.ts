@@ -37,7 +37,7 @@ function getLastUserHistory(history: ChatMessage[]): string {
 
 const ReviewMessageCommand: SlashCommand = {
   name: "review",
-  description: "Review code and give feedback",
+  description: "代码审查，评论",
   run: async function* ({ llm, history }) {
     
     let reviewText = getLastUserHistory(history).replace("\\review", "");

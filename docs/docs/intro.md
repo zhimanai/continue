@@ -1,6 +1,6 @@
 ---
 title: 💻 Introduction
-description: Continue is the open-source autopilot for software development
+description: 知满提供代码插件等本地化部署能力，为企业赋能大模型
 keywords: [introduction, intro, continue, autopilot, chatgpt]
 ---
 
@@ -8,9 +8,9 @@ keywords: [introduction, intro, continue, autopilot, chatgpt]
 
 ![continue-cover-logo](/img/intro.png)
 
-**Continue keeps developers in flow. Our open-source [VS Code](https://marketplace.visualstudio.com/items?itemName=Continue.continue) and [JetBrains](https://plugins.jetbrains.com/plugin/22707-continue-extension) extensions enable you to easily create your own modular AI software development system that you can improve.**
+**此代码插件主要提供代码修改，代码解释和自动生成功能。能连接各种本地和远程的大模型。我们在持续收集用户需求，增加更多功能。敬请期待。**
 
-Some examples of what you can achieve are:
+操作示例如下：
 
 - [Easily understand code sections](how-to-use-continue.md#easily-understand-code-sections)
 - [Tab to autocomplete code suggestions](how-to-use-continue.md#tab-to-autocomplete-code-suggestions)
@@ -21,4 +21,3 @@ Some examples of what you can achieve are:
 - [Add classes, files, and more to context](how-to-use-continue.md#add-classes-files-and-more-to-context)
 - [Understand terminal errors immediately](how-to-use-continue.md#understand-terminal-errors-immediately)
 
-Continue enables you to use the right model for the job, whether it's open-source or commercial, running local or remote, and used for chat, autocomplete, or embeddings. And we provide numerous points of configuration, so that you can customize the extension to fit into your existing workflows.

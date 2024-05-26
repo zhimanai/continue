@@ -16,40 +16,10 @@ function Onboarding() {
 
   return (
     <div className="p-2 max-w-96 mt-16 mx-auto">
-      <h1 className="text-center">Welcome to Continue</h1>
+      <h1 className="text-center">感谢使用知满</h1>
       <p className="text-center pb-2">
-        Let's find the setup that works best for you
+        选择大模型
       </p>
-      <Div
-        color={"#be841b"}
-        disabled={false}
-        selected={selected === 0}
-        hovered={hovered0}
-        onClick={() => {
-          setSelected(0);
-        }}
-        onMouseEnter={() => setHovered0(true)}
-        onMouseLeave={() => setHovered0(false)}
-      >
-        <h3>✨ Cloud models</h3>
-        <p>
-          This is the best experience. Continue will use the strongest available
-          commercial models to index code and answer questions. Code is only
-          ever stored locally.
-        </p>
-      </Div>
-      {selected === 0 && (
-        <p className="px-3">
-          <b>Embeddings:</b> Voyage Code 2
-          <br />
-          <br />
-          <b>Autocomplete:</b> Starcoder 7b via Fireworks AI (free trial)
-          <br />
-          <br />
-          <b>Chat:</b> GPT-4, Claude 3, and others (free trial)
-        </p>
-      )}
-      <br></br>
       <Div
         color={greenButtonColor}
         disabled={false}
@@ -61,10 +31,9 @@ function Onboarding() {
         onMouseEnter={() => setHovered1(true)}
         onMouseLeave={() => setHovered1(false)}
       >
-        <h3>🔒 Local models</h3>
+        <h3>🔒 本地大模型</h3>
         <p>
-          No code will leave your computer, but less powerful models are used.
-          Works with Ollama, LM Studio and others.
+          选择本地部署的Ollama， LM Studio等部署你的大模型
         </p>
       </Div>
       {selected === 1 && (
@@ -98,14 +67,9 @@ function Onboarding() {
           postToIde("openConfigJson", undefined);
         }}
       >
-        <h3>⚙️ Your own models</h3>
+        <h3>⚙️ 私有云上的模型</h3>
         <p>
-          Continue lets you use your own API key or self-hosted LLMs.{" "}
-          <a href="https://docs.continue.dev/customization/overview">
-            Read the docs
-          </a>{" "}
-          to learn more about using config.json to customize Continue. This can
-          always be done later.
+            在 config.json 文件里配置你的私有云大模型。你可能需要指定域名，端口，和API密钥。
         </p>
       </Div>
       {selected === 2 && (
