@@ -4,7 +4,7 @@ import { removeQuotesAndEscapes } from "../../util/index.js";
 
 const GenerateTerminalCommand: SlashCommand = {
   name: "cmd",
-  description: "Generate a shell command",
+  description: "生成 shell 命令",
   run: async function* ({ ide, llm, input }) {
     const gen =
       llm.streamComplete(`The user has made a request to run a shell command. Their description of what it should do is:
@@ -36,7 +36,7 @@ Please write a shell command that will do what the user requested. Your output s
     }
 
     await ide.runCommand(cmd);
-    yield `Generated shell command: ${cmd}`;
+    yield `生成shell命令: ${cmd}`;
   },
 };
 

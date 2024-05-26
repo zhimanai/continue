@@ -36,7 +36,7 @@ function reformatCodeBlocks(msgText: string): string {
 
 const ShareSlashCommand: SlashCommand = {
   name: "share",
-  description: "Export the current chat session to markdown",
+  description: "导出对话记录为Markdown",
   run: async function* ({ ide, history, params }) {
     const now = new Date();
 
@@ -92,7 +92,7 @@ const ShareSlashCommand: SlashCommand = {
     await ide.writeFile(outPath, content);
     await ide.openFile(outPath);
 
-    yield `The session transcript has been saved to a markdown file at \`${outPath}\`.`;
+    yield `这一段会话已保存至Markdown文件 \`${outPath}\`.`;
   },
 };
 

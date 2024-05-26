@@ -3,7 +3,7 @@ import { stripImages } from "../../llm/countTokens.js";
 
 const CommitMessageCommand: SlashCommand = {
   name: "commit",
-  description: "Generate a commit message for current changes",
+  description: "为当前变更提交生成一个简短的 commit message",
   run: async function* ({ ide, llm, input }) {
     const diff = await ide.getDiff();
 
