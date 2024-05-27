@@ -125,13 +125,13 @@
       {
         "command": "continue.focusContinueInput",
         "category": "Continue",
-        "title": "Add Highlighted Code to Context",
+        "title": "在对话中引用代码",
         "group": "Continue"
       },
       {
         "command": "continue.focusContinueInputWithoutClear",
         "category": "Continue",
-        "title": "Add Highlighted Code to Context",
+        "title": "在对话中引用代码",
         "group": "Continue"
       },
       {
@@ -162,63 +162,57 @@
       {
         "command": "continue.shareSession",
         "category": "Continue",
-        "title": "Share Session",
+        "title": "分析对话",
         "group": "Continue"
       },
       {
         "command": "continue.selectFilesAsContext",
         "category": "Continue",
-        "title": "Continue: Select Files as Context",
+        "title": "选择文件作为上下文",
         "group": "Continue"
       },
       {
         "command": "continue.newSession",
         "category": "Continue",
-        "title": "New Session",
+        "title": "新建对话",
         "icon": "$(add)",
         "group": "Continue"
       },
       {
         "command": "continue.viewHistory",
         "category": "Continue",
-        "title": "View History",
+        "title": "对话历史",
         "icon": "$(history)",
         "group": "Continue"
       },
       {
         "command": "continue.writeCommentsForCode",
         "category": "Continue",
-        "title": "Write Comments for this Code",
-        "group": "Continue"
-      },
-      {
-        "command": "continue.writeDocstringForCode",
-        "category": "Continue",
-        "title": "Write a Docstring for this Code",
+        "title": "写代码注释",
         "group": "Continue"
       },
       {
         "command": "continue.fixCode",
         "category": "Continue",
-        "title": "Fix this Code",
+        "title": "修改代码",
         "group": "Continue"
       },
       {
         "command": "continue.optimizeCode",
         "category": "Continue",
-        "title": "Optimize this Code",
+        "title": "优化代码",
         "group": "Continue"
       },
       {
         "command": "continue.unitTest",
         "category": "Continue",
-        "title": "Write unit tests for this Code",
+        "title": "写单元测试",
         "group": "Continue"
       },
       {
         "command": "continue.fixGrammar",
         "category": "Continue",
-        "title": "Fix Grammar / Spelling",
+        "title": "修改语法和拼写错误",
         "group": "Continue"
       }
     ],
