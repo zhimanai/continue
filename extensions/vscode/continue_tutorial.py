@@ -1,14 +1,3 @@
-"""
-_________               _____ _____                       
-__  ____/______ _______ __  /____(_)_______ ____  _______ 
-_  /     _  __ \__  __ \_  __/__  / __  __ \_  / / /_  _ \ 
-/ /___   / /_/ /_  / / // /_  _  /  _  / / // /_/ / /  __/
-\____/   \____/ /_/ /_/ \__/  /_/   /_/ /_/ \__,_/  \___/ 
-
-Welcome to Continue! This is a 2 minute tutorial.
-
-You can click the gray buttons, starting with "Highlight the function" to follow along.
-"""
 
 # region —————————————————————————— Part 1: Ask a question about code [Cmd+L] ——————————————————————————
 

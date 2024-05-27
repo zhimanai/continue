@@ -350,6 +350,12 @@ const commandsMap: (
         "If there are any grammar or spelling mistakes in this writing, fix them. Do not make other large changes to the writing.",
       );
     },
+    "continue.unitTest": async () => {
+      streamInlineEdit(
+        "unitTest", 
+        "Write unit tests for this code, and append to the end of the code. Do not modify the existing code.",
+      );
+    },
     "continue.viewLogs": async () => {
       // Open ~/.continue/continue.log
       const logFile = path.join(os.homedir(), ".continue", "continue.log");

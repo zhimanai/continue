@@ -1,25 +1,25 @@
 {
   "name": "continue",
   "icon": "media/icon.png",
-  "version": "0.9.94",
+  "version": "0.9.108",
   "repository": {
     "type": "git",
-    "url": "https://github.com/continuedev/continue"
+    "url": "https://github.com/zhimanai/continue"
   },
   "extensionKind": [
     "ui",
     "workspace"
   ],
   "bugs": {
-    "url": "https://github.com/continuedev/continue/issues",
-    "email": "nate@continue.dev"
+    "url": "https://github.com/zhimanai/continue/issues",
+    "email": "alex@zhiman.ai"
   },
-  "homepage": "https://continue.dev",
-  "qna": "https://github.com/continuedev/continue/issues/new/choose",
+  "homepage": "https://zhiman.ai",
+  "qna": "https://github.com/zhimanai/continue/issues/new/choose",
   "license": "Apache-2.0",
-  "displayName": "Continue - Llama 3, GPT-4, and more",
+  "displayName": "知满代码插件",
   "pricing": "Free",
-  "description": "Open-source autopilot - build your own AI software development system",
+  "description": "代码补全，注释，单元测试",
   "publisher": "Continue",
   "engines": {
     "vscode": "^1.70.0",
@@ -39,9 +39,6 @@
   "keywords": [
     "chatgpt",
     "github",
-    "copilot",
-    "llama",
-    "3",
     "codegpt",
     "ai"
   ],
@@ -57,7 +54,7 @@
       "properties": {
         "continue.telemetryEnabled": {
           "type": "boolean",
-          "default": true,
+          "default": false,
           "markdownDescription": "Continue collects anonymous usage data, cleaned of PII, to help us improve the product for our users. Read more  at [continue.dev › Telemetry](https://docs.continue.dev/telemetry)."
         },
         "continue.showInlineTip": {
@@ -128,13 +125,13 @@
       {
         "command": "continue.focusContinueInput",
         "category": "Continue",
-        "title": "Add Highlighted Code to Context",
+        "title": "在对话中引用代码",
         "group": "Continue"
       },
       {
         "command": "continue.focusContinueInputWithoutClear",
         "category": "Continue",
-        "title": "Add Highlighted Code to Context",
+        "title": "在对话中引用代码",
         "group": "Continue"
       },
       {
@@ -165,57 +162,57 @@
       {
         "command": "continue.shareSession",
         "category": "Continue",
-        "title": "Share Session",
+        "title": "分析对话",
         "group": "Continue"
       },
       {
         "command": "continue.selectFilesAsContext",
         "category": "Continue",
-        "title": "Continue: Select Files as Context",
+        "title": "选择文件作为上下文",
         "group": "Continue"
       },
       {
         "command": "continue.newSession",
         "category": "Continue",
-        "title": "New Session",
+        "title": "新建对话",
         "icon": "$(add)",
         "group": "Continue"
       },
       {
         "command": "continue.viewHistory",
         "category": "Continue",
-        "title": "View History",
+        "title": "对话历史",
         "icon": "$(history)",
         "group": "Continue"
       },
       {
         "command": "continue.writeCommentsForCode",
         "category": "Continue",
-        "title": "Write Comments for this Code",
-        "group": "Continue"
-      },
-      {
-        "command": "continue.writeDocstringForCode",
-        "category": "Continue",
-        "title": "Write a Docstring for this Code",
+        "title": "写代码注释",
         "group": "Continue"
       },
       {
         "command": "continue.fixCode",
         "category": "Continue",
-        "title": "Fix this Code",
+        "title": "修改代码",
         "group": "Continue"
       },
       {
         "command": "continue.optimizeCode",
         "category": "Continue",
-        "title": "Optimize this Code",
+        "title": "优化代码",
+        "group": "Continue"
+      },
+      {
+        "command": "continue.unitTest",
+        "category": "Continue",
+        "title": "写单元测试",
         "group": "Continue"
       },
       {
         "command": "continue.fixGrammar",
         "category": "Continue",
-        "title": "Fix Grammar / Spelling",
+        "title": "修改语法和拼写错误",
         "group": "Continue"
       }
     ],
@@ -286,7 +283,7 @@
     "submenus": [
       {
         "id": "continue.continueSubMenu",
-        "label": "Continue"
+        "label": "知满"
       }
     ],
     "menus": {
@@ -299,6 +296,9 @@
         },
         {
           "command": "continue.focusContinueInput"
+        },
+        {
+          "command": "continue.unitTest"
         },
         {
           "command": "continue.focusContinueInputWithoutClear"
@@ -349,6 +349,11 @@
         },
         {
           "command": "continue.optimizeCode",
+          "group": "Continue",
+          "when": "editorHasSelection"
+        },
+        {
+          "command": "continue.unitTest",
           "group": "Continue",
           "when": "editorHasSelection"
         },
