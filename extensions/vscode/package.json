@@ -1,7 +1,7 @@
 {
   "name": "continue",
   "icon": "media/icon.png",
-  "version": "0.9.106",
+  "version": "0.9.108",
   "repository": {
     "type": "git",
     "url": "https://github.com/zhimanai/continue"
@@ -289,7 +289,7 @@
     "submenus": [
       {
         "id": "continue.continueSubMenu",
-        "label": "Continue"
+        "label": "知满"
       }
     ],
     "menus": {
