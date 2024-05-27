@@ -351,7 +351,10 @@ const commandsMap: (
       );
     },
     "continue.unitTest": async () => {
-      streamInlineEdit("unitTest", "Write unit tests for this code");
+      streamInlineEdit(
+        "unitTest", 
+        "Write unit tests for this code, and append to the end of the code. Do not modify the existing code.",
+      );
     },
     "continue.viewLogs": async () => {
       // Open ~/.continue/continue.log
