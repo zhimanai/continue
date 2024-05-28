@@ -517,7 +517,6 @@ type ModelProvider =
   | "flowise"
   | "groq"
   | "continue-proxy"
-  | "zhiman"
   | "custom";
 
 export type ModelName =

@@ -1,7 +1,7 @@
 {
-  "name": "continue",
+  "name": "zhimannamespace",
   "icon": "media/icon.png",
-  "version": "0.9.108",
+  "version": "1.0.101",
   "repository": {
     "type": "git",
     "url": "https://github.com/zhimanai/continue"
@@ -20,7 +20,7 @@
   "displayName": "知满代码插件",
   "pricing": "Free",
   "description": "代码补全，注释，单元测试",
-  "publisher": "Continue",
+  "publisher": "Zhiman",
   "engines": {
     "vscode": "^1.70.0",
     "node": ">=20.11.0"
@@ -52,32 +52,32 @@
     "configuration": {
       "title": "Continue",
       "properties": {
-        "continue.telemetryEnabled": {
+        "zhimannamespace.telemetryEnabled": {
           "type": "boolean",
           "default": false,
           "markdownDescription": "Continue collects anonymous usage data, cleaned of PII, to help us improve the product for our users. Read more  at [continue.dev › Telemetry](https://docs.continue.dev/telemetry)."
         },
-        "continue.showInlineTip": {
+        "zhimannamespace.showInlineTip": {
           "type": "boolean",
           "default": true,
           "description": "Show inline suggestion to use the Continue keyboard shortcuts (e.g. \"Cmd/Ctrl L to select code, Cmd/Ctrl I to edit\")."
         },
-        "continue.enableTabAutocomplete": {
+        "zhimannamespace.enableTabAutocomplete": {
           "type": "boolean",
           "default": true,
           "markdownDescription": "Enable Continue's tab autocomplete feature. Read our walkthrough to learn about configuration and how to share feedback: [continue.dev › Walkthrough: Tab Autocomplete](https://docs.continue.dev/walkthroughs/tab-autocomplete)"
         },
-        "continue.remoteConfigServerUrl": {
+        "zhimannamespace.remoteConfigServerUrl": {
           "type": "string",
           "default": null,
           "markdownDescription": "If your team is set up to use shared configuration, enter the server URL here and your user token below to enable automatic syncing."
         },
-        "continue.userToken": {
+        "zhimannamespace.userToken": {
           "type": "string",
           "default": null,
           "markdownDescription": "If your team is set up to use shared configuration, enter your user token here and your server URL above to enable automatic syncing."
         },
-        "continue.remoteConfigSyncPeriod": {
+        "zhimannamespace.remoteConfigSyncPeriod": {
           "type": "number",
           "default": 60,
           "description": "The period of time in minutes between automatic syncs."
@@ -86,131 +86,131 @@
     },
     "commands": [
       {
-        "command": "continue.acceptDiff",
+        "command": "zhimannamespace.acceptDiff",
         "category": "Continue",
         "title": "Accept Diff",
         "group": "Continue"
       },
       {
-        "command": "continue.rejectDiff",
+        "command": "zhimannamespace.rejectDiff",
         "category": "Continue",
         "title": "Reject Diff",
         "group": "Continue",
         "icon": "$(stop)"
       },
       {
-        "command": "continue.acceptVerticalDiffBlock",
+        "command": "zhimannamespace.acceptVerticalDiffBlock",
         "category": "Continue",
         "title": "Accept Vertical Diff Block",
         "group": "Continue"
       },
       {
-        "command": "continue.rejectVerticalDiffBlock",
+        "command": "zhimannamespace.rejectVerticalDiffBlock",
         "category": "Continue",
         "title": "Reject Vertical Diff Block",
         "group": "Continue"
       },
       {
-        "command": "continue.quickEdit",
+        "command": "zhimannamespace.quickEdit",
         "category": "Continue",
         "title": "Generate Code",
         "group": "Continue"
       },
       {
-        "command": "continue.toggleAuxiliaryBar",
+        "command": "zhimannamespace.toggleAuxiliaryBar",
         "category": "Continue",
         "title": "Toggle Right Sidebar",
         "group": "Continue"
       },
       {
-        "command": "continue.focusContinueInput",
+        "command": "zhimannamespace.focusContinueInput",
         "category": "Continue",
         "title": "在对话中引用代码",
         "group": "Continue"
       },
       {
-        "command": "continue.focusContinueInputWithoutClear",
+        "command": "zhimannamespace.focusContinueInputWithoutClear",
         "category": "Continue",
         "title": "在对话中引用代码",
         "group": "Continue"
       },
       {
-        "command": "continue.debugTerminal",
+        "command": "zhimannamespace.debugTerminal",
         "category": "Continue",
         "title": "Continue: Debug Terminal",
         "group": "Continue"
       },
       {
-        "command": "continue.toggleFullScreen",
+        "command": "zhimannamespace.toggleFullScreen",
         "category": "Continue",
         "title": "Toggle Full Screen",
         "icon": "$(fullscreen)",
         "group": "Continue"
       },
       {
-        "command": "continue.openConfigJson",
+        "command": "zhimannamespace.openConfigJson",
         "category": "Continue",
         "title": "Open config.json",
         "group": "Continue"
       },
       {
-        "command": "continue.toggleTabAutocompleteEnabled",
+        "command": "zhimannamespace.toggleTabAutocompleteEnabled",
         "category": "Continue",
         "title": "Toggle Autocomplete Enabled",
         "group": "Continue"
       },
       {
-        "command": "continue.shareSession",
+        "command": "zhimannamespace.shareSession",
         "category": "Continue",
         "title": "分析对话",
         "group": "Continue"
       },
       {
-        "command": "continue.selectFilesAsContext",
+        "command": "zhimannamespace.selectFilesAsContext",
         "category": "Continue",
         "title": "选择文件作为上下文",
         "group": "Continue"
       },
       {
-        "command": "continue.newSession",
+        "command": "zhimannamespace.newSession",
         "category": "Continue",
         "title": "新建对话",
         "icon": "$(add)",
         "group": "Continue"
       },
       {
-        "command": "continue.viewHistory",
+        "command": "zhimannamespace.viewHistory",
         "category": "Continue",
         "title": "对话历史",
         "icon": "$(history)",
         "group": "Continue"
       },
       {
-        "command": "continue.writeCommentsForCode",
+        "command": "zhimannamespace.writeCommentsForCode",
         "category": "Continue",
         "title": "写代码注释",
         "group": "Continue"
       },
       {
-        "command": "continue.fixCode",
+        "command": "zhimannamespace.fixCode",
         "category": "Continue",
         "title": "修改代码",
         "group": "Continue"
       },
       {
-        "command": "continue.optimizeCode",
+        "command": "zhimannamespace.optimizeCode",
         "category": "Continue",
         "title": "优化代码",
         "group": "Continue"
       },
       {
-        "command": "continue.unitTest",
+        "command": "zhimannamespace.unitTest",
         "category": "Continue",
         "title": "写单元测试",
         "group": "Continue"
       },
       {
-        "command": "continue.fixGrammar",
+        "command": "zhimannamespace.fixGrammar",
         "category": "Continue",
         "title": "修改语法和拼写错误",
         "group": "Continue"
@@ -218,184 +218,184 @@
     ],
     "keybindings": [
       {
-        "command": "continue.focusContinueInput",
+        "command": "zhimannamespace.focusContinueInput",
         "mac": "cmd+l",
         "key": "ctrl+l"
       },
       {
-        "command": "continue.focusContinueInputWithoutClear",
+        "command": "zhimannamespace.focusContinueInputWithoutClear",
         "mac": "cmd+shift+l",
         "key": "ctrl+shift+l"
       },
       {
-        "command": "continue.acceptDiff",
+        "command": "zhimannamespace.acceptDiff",
         "mac": "shift+cmd+enter",
         "key": "shift+ctrl+enter"
       },
       {
-        "command": "continue.rejectDiff",
+        "command": "zhimannamespace.rejectDiff",
         "mac": "shift+cmd+backspace",
         "key": "shift+ctrl+backspace"
       },
       {
-        "command": "continue.rejectDiff",
+        "command": "zhimannamespace.rejectDiff",
         "mac": "cmd+z",
         "key": "ctrl+z",
-        "when": "continue.diffVisible"
+        "when": "zhimannamespace.diffVisible"
       },
       {
-        "command": "continue.acceptVerticalDiffBlock",
+        "command": "zhimannamespace.acceptVerticalDiffBlock",
         "mac": "alt+cmd+y",
         "key": "alt+ctrl+y"
       },
       {
-        "command": "continue.rejectVerticalDiffBlock",
+        "command": "zhimannamespace.rejectVerticalDiffBlock",
         "mac": "alt+cmd+n",
         "key": "alt+ctrl+n"
       },
       {
-        "command": "continue.quickEdit",
+        "command": "zhimannamespace.quickEdit",
         "mac": "cmd+i",
         "key": "ctrl+i"
       },
       {
-        "command": "continue.toggleAuxiliaryBar",
+        "command": "zhimannamespace.toggleAuxiliaryBar",
         "mac": "alt+cmd+l",
         "key": "alt+ctrl+l"
       },
       {
-        "command": "continue.debugTerminal",
+        "command": "zhimannamespace.debugTerminal",
         "mac": "cmd+shift+r",
         "key": "ctrl+shift+r"
       },
       {
-        "command": "continue.toggleFullScreen",
+        "command": "zhimannamespace.toggleFullScreen",
         "mac": "cmd+k cmd+m",
         "key": "ctrl+k ctrl+m",
         "when": "!terminalFocus"
       },
       {
-        "command": "continue.toggleTabAutocompleteEnabled",
+        "command": "zhimannamespace.toggleTabAutocompleteEnabled",
         "mac": "cmd+k cmd+a",
         "key": "ctrl+k ctrl+a"
       }
     ],
     "submenus": [
       {
-        "id": "continue.continueSubMenu",
+        "id": "zhimannamespace.continueSubMenu",
         "label": "知满"
       }
     ],
     "menus": {
       "commandPalette": [
         {
-          "command": "continue.quickEdit"
+          "command": "zhimannamespace.quickEdit"
         },
         {
-          "command": "continue.toggleAuxiliaryBar"
+          "command": "zhimannamespace.toggleAuxiliaryBar"
         },
         {
-          "command": "continue.focusContinueInput"
+          "command": "zhimannamespace.focusContinueInput"
         },
         {
-          "command": "continue.unitTest"
+          "command": "zhimannamespace.unitTest"
         },
         {
-          "command": "continue.focusContinueInputWithoutClear"
+          "command": "zhimannamespace.focusContinueInputWithoutClear"
         },
         {
-          "command": "continue.debugTerminal"
+          "command": "zhimannamespace.debugTerminal"
         },
         {
-          "command": "continue.toggleFullScreen"
+          "command": "zhimannamespace.toggleFullScreen"
         },
         {
-          "command": "continue.newSession"
+          "command": "zhimannamespace.newSession"
         }
       ],
       "editor/context": [
         {
-          "submenu": "continue.continueSubMenu",
+          "submenu": "zhimannamespace.continueSubMenu",
           "group": "0_acontinue"
         }
       ],
       "editor/title/run": [
         {
-          "command": "continue.rejectDiff",
+          "command": "zhimannamespace.rejectDiff",
           "group": "Continue",
-          "when": "continue.streamingDiff"
+          "when": "zhimannamespace.streamingDiff"
         }
       ],
-      "continue.continueSubMenu": [
+      "zhimannamespace.continueSubMenu": [
         {
-          "command": "continue.focusContinueInputWithoutClear",
+          "command": "zhimannamespace.focusContinueInputWithoutClear",
           "group": "Continue",
           "when": "editorHasSelection"
         },
         {
-          "command": "continue.writeCommentsForCode",
+          "command": "zhimannamespace.writeCommentsForCode",
           "group": "Continue",
           "when": "editorHasSelection"
         },
         {
-          "command": "continue.writeDocstringForCode",
+          "command": "zhimannamespace.writeDocstringForCode",
           "group": "Continue",
           "when": "editorHasSelection"
         },
         {
-          "command": "continue.fixCode",
+          "command": "zhimannamespace.fixCode",
           "group": "Continue",
           "when": "editorHasSelection"
         },
         {
-          "command": "continue.optimizeCode",
+          "command": "zhimannamespace.optimizeCode",
           "group": "Continue",
           "when": "editorHasSelection"
         },
         {
-          "command": "continue.unitTest",
+          "command": "zhimannamespace.unitTest",
           "group": "Continue",
           "when": "editorHasSelection"
         },
         {
-          "command": "continue.fixGrammar",
+          "command": "zhimannamespace.fixGrammar",
           "group": "Continue",
           "when": "editorHasSelection && editorLangId == 'markdown'"
         }
       ],
       "explorer/context": [
         {
-          "command": "continue.selectFilesAsContext",
+          "command": "zhimannamespace.selectFilesAsContext",
           "group": "1_debug@1"
         }
       ],
       "view/title": [
         {
-          "command": "continue.newSession",
+          "command": "zhimannamespace.newSession",
           "group": "navigation@1",
           "when": "view == continue.continueGUIView"
         },
         {
-          "command": "continue.toggleFullScreen",
+          "command": "zhimannamespace.toggleFullScreen",
           "group": "navigation@1",
           "when": "view == continue.continueGUIView"
         },
         {
-          "command": "continue.viewHistory",
+          "command": "zhimannamespace.viewHistory",
           "group": "navigation@1",
           "when": "view == continue.continueGUIView"
         }
       ],
       "editor/title": [
         {
-          "command": "continue.toggleFullScreen",
+          "command": "zhimannamespace.toggleFullScreen",
           "group": "navigation@1",
           "when": "activeWebviewPanelId == continue.continueGUIView"
         }
       ],
       "terminal/context": [
         {
-          "command": "continue.debugTerminal",
+          "command": "zhimannamespace.debugTerminal",
           "group": "navigation@top"
         }
       ]
@@ -413,7 +413,7 @@
       "continue": [
         {
           "type": "webview",
-          "id": "continue.continueGUIView",
+          "id": "zhimannamespace.continueGUIView",
           "name": "",
           "visibility": "visible"
         }

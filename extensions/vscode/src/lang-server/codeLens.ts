@@ -45,12 +45,12 @@ class VerticalPerLineCodeLensProvider implements vscode.CodeLensProvider {
         codeLenses.push(
           new vscode.CodeLens(range, {
             title: `Accept All (${getMetaKeyLabel()}⇧⏎)`,
-            command: "continue.acceptDiff",
+            command: "zhimannamespace.acceptDiff",
             arguments: [filepath, i],
           }),
           new vscode.CodeLens(range, {
             title: `Reject All (${getMetaKeyLabel()}⇧⌫)`,
-            command: "continue.rejectDiff",
+            command: "zhimannamespace.rejectDiff",
             arguments: [filepath, i],
           }),
         );
@@ -62,7 +62,7 @@ class VerticalPerLineCodeLensProvider implements vscode.CodeLensProvider {
               ? ` (${getAltOrOption()}${getMetaKeyLabel()}Y)`
               : ""
           }`,
-          command: "continue.acceptVerticalDiffBlock",
+          command: "zhimannamespace.acceptVerticalDiffBlock",
           arguments: [filepath, i],
         }),
         new vscode.CodeLens(range, {
@@ -71,7 +71,7 @@ class VerticalPerLineCodeLensProvider implements vscode.CodeLensProvider {
               ? ` (${getAltOrOption()}${getMetaKeyLabel()}N)`
               : ""
           }`,
-          command: "continue.rejectVerticalDiffBlock",
+          command: "zhimannamespace.rejectVerticalDiffBlock",
           arguments: [filepath, i],
         }),
       );
@@ -153,12 +153,12 @@ class DiffViewerCodeLensProvider implements vscode.CodeLensProvider {
       codeLenses.push(
         new vscode.CodeLens(range, {
           title: `Accept All ✅ (${getMetaKeyLabel()}⇧⏎)`,
-          command: "continue.acceptDiff",
+          command: "zhimannamespace.acceptDiff",
           arguments: [document.uri.fsPath],
         }),
         new vscode.CodeLens(range, {
           title: `Reject All ❌ (${getMetaKeyLabel()}⇧⌫)`,
-          command: "continue.rejectDiff",
+          command: "zhimannamespace.rejectDiff",
           arguments: [document.uri.fsPath],
         }),
         // new vscode.CodeLens(range, {
@@ -236,7 +236,7 @@ const actions: TutorialCodeLensItems[] = [
     commands: [
       {
         title: `${cmdCtrl}+L`,
-        command: "continue.focusContinueInput",
+        command: "zhimannamespace.focusContinueInput",
       },
     ],
   },
@@ -260,7 +260,7 @@ const actions: TutorialCodeLensItems[] = [
     commands: [
       {
         title: `${cmdCtrl}+I`,
-        command: "continue.quickEdit",
+        command: "zhimannamespace.quickEdit",
         arguments: ["Add comments"],
       },
     ],
@@ -284,7 +284,7 @@ const actions: TutorialCodeLensItems[] = [
     commands: [
       {
         title: "Debug the error",
-        command: "continue.debugTerminal",
+        command: "zhimannamespace.debugTerminal",
       },
     ],
   },
@@ -293,7 +293,7 @@ const actions: TutorialCodeLensItems[] = [
     commands: [
       {
         title: `${cmdCtrl}+Shift+R`,
-        command: "continue.debugTerminal",
+        command: "zhimannamespace.debugTerminal",
       },
     ],
   },
