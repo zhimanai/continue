@@ -109,12 +109,12 @@ class SuggestionsCodeLensProvider implements vscode.CodeLensProvider {
       codeLenses.push(
         new vscode.CodeLens(range, {
           title: "Accept",
-          command: "continue.acceptSuggestion",
+          command: "zhimannamespace.acceptSuggestion",
           arguments: [suggestion],
         }),
         new vscode.CodeLens(range, {
           title: "Reject",
-          command: "continue.rejectSuggestion",
+          command: "zhimannamespace.rejectSuggestion",
           arguments: [suggestion],
         }),
       );
@@ -163,7 +163,7 @@ class DiffViewerCodeLensProvider implements vscode.CodeLensProvider {
         }),
         // new vscode.CodeLens(range, {
         //   title: `Further Edit ✏️ (${getMetaKeyLabel()}⇧M)`,
-        //   command: "continue.focusContinueInputWithEdit",
+        //   command: "zhimannamespace.focusContinueInputWithEdit",
         // })
       );
       return codeLenses;
@@ -195,7 +195,7 @@ class ConfigPyCodeLensProvider implements vscode.CodeLensProvider {
       // codeLenses.push(
       //   new vscode.CodeLens(range, {
       //     title: `+ Add a Model`,
-      //     command: "continue.addModel",
+      //     command: "zhimannamespace.addModel",
       //   })
       // );
     }
@@ -214,7 +214,7 @@ class ConfigPyCodeLensProvider implements vscode.CodeLensProvider {
       codeLenses.push(
         new vscode.CodeLens(range, {
           title: `✏️ Edit in UI`,
-          command: "continue.openSettingsUI",
+          command: "zhimannamespace.openSettingsUI",
         }),
       );
     }
@@ -245,12 +245,12 @@ const actions: TutorialCodeLensItems[] = [
     commands: [
       {
         title: `"what does this code do?"`,
-        command: "continue.sendMainUserInput",
+        command: "zhimannamespace.sendMainUserInput",
         arguments: ["what does this code do?"],
       },
       {
         title: `"what is an alternative to this?"`,
-        command: "continue.sendMainUserInput",
+        command: "zhimannamespace.sendMainUserInput",
         arguments: ["what is an alternative to this?"],
       },
     ],
@@ -270,7 +270,7 @@ const actions: TutorialCodeLensItems[] = [
     commands: [
       {
         title: "Run the file",
-        command: "continue.sendToTerminal",
+        command: "zhimannamespace.sendToTerminal",
         arguments: [
           "python " +
             path.join(getExtensionUri().fsPath, "continue_tutorial.py") +
@@ -333,7 +333,7 @@ class TutorialCodeLensProvider implements vscode.CodeLensProvider {
       codeLenses.push(
         new vscode.CodeLens(range, {
           title: "Highlight the function",
-          command: "continue.selectRange",
+          command: "zhimannamespace.selectRange",
           arguments: [lineOf11 + 3, lineOf11 + 11],
         }),
       );
@@ -346,7 +346,7 @@ class TutorialCodeLensProvider implements vscode.CodeLensProvider {
       codeLenses.push(
         new vscode.CodeLens(range, {
           title: "Highlight the function",
-          command: "continue.selectRange",
+          command: "zhimannamespace.selectRange",
           arguments: [lineOf21 + 3, lineOf21 + 14],
         }),
       );
@@ -368,7 +368,7 @@ class TutorialCodeLensProvider implements vscode.CodeLensProvider {
     //   codeLenses.push(
     //     new vscode.CodeLens(range, {
     //       title: `Begin Section`,
-    //       command: "continue.foldAndUnfold",
+    //       command: "zhimannamespace.foldAndUnfold",
     //       arguments: [linesToFold, [lineOfRegion, lineOfRegion + 1]],
     //     }),
     //   );

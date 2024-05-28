@@ -104,7 +104,7 @@ class VsCodeIde implements IDE {
   async isTelemetryEnabled(): Promise<boolean> {
     return (
       (await vscode.workspace
-        .getConfiguration("continue")
+        .getConfiguration("zhimannamespace")
         .get("telemetryEnabled")) ?? true
     );
   }

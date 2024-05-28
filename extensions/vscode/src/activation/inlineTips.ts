@@ -12,7 +12,7 @@ const inlineTipDecoration = vscode.window.createTextEditorDecorationType({
 
 function showInlineTip() {
   return vscode.workspace
-    .getConfiguration("continue")
+    .getConfiguration("zhimannamespace")
     .get<boolean>("showInlineTip");
 }
 
@@ -32,7 +32,7 @@ function handleSelectionChange(e: vscode.TextEditorSelectionChangeEvent) {
   const line = Math.max(0, selection.start.line - 1);
 
   const hoverMarkdown = new vscode.MarkdownString(
-    `点击 [这里](command:continue.hideInlineTip)，隐藏此快捷键提示`,
+    `点击 [这里](command:zhimannamespace.hideInlineTip)，隐藏此快捷键提示`,
   );
   hoverMarkdown.isTrusted = true;
   hoverMarkdown.supportHtml = true;

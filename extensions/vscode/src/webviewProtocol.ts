@@ -171,7 +171,7 @@ export class VsCodeWebviewProtocol {
     });
     this.on("toggleDevTools", (msg) => {
       vscode.commands.executeCommand("workbench.action.toggleDevTools");
-      vscode.commands.executeCommand("continue.viewLogs");
+      vscode.commands.executeCommand("zhimannamespace.viewLogs");
     });
     this.on("reloadWindow", (msg) => {
       vscode.commands.executeCommand("workbench.action.reloadWindow");

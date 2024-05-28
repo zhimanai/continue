@@ -378,7 +378,7 @@ const commandsMap: (
     },
     "zhimannamespace.hideInlineTip": () => {
       vscode.workspace
-        .getConfiguration("continue")
+        .getConfiguration("zhimannamespace")
         .update("showInlineTip", false, vscode.ConfigurationTarget.Global);
     },
 
@@ -525,7 +525,7 @@ const commandsMap: (
       completionProvider.accept(completionId);
     },
     "zhimannamespace.toggleTabAutocompleteEnabled": () => {
-      const config = vscode.workspace.getConfiguration("continue");
+      const config = vscode.workspace.getConfiguration("zhimannamespace");
       const enabled = config.get("enableTabAutocomplete");
       config.update(
         "enableTabAutocomplete",

@@ -50,7 +50,7 @@
   "browser": "./out/extension.js",
   "contributes": {
     "configuration": {
-      "title": "Continue",
+      "title": "zhimannamespace",
       "properties": {
         "zhimannamespace.telemetryEnabled": {
           "type": "boolean",
@@ -189,6 +189,12 @@
         "command": "zhimannamespace.writeCommentsForCode",
         "category": "Continue",
         "title": "写代码注释",
+        "group": "Continue"
+      },
+      {
+        "command": "zhimannamespace.writeDocstringForCode",
+        "category": "Continue",
+        "title": "写文档字符串docstring",
         "group": "Continue"
       },
       {
@@ -373,24 +379,24 @@
         {
           "command": "zhimannamespace.newSession",
           "group": "navigation@1",
-          "when": "view == continue.continueGUIView"
+          "when": "view == zhimannamespace.continueGUIView"
         },
         {
           "command": "zhimannamespace.toggleFullScreen",
           "group": "navigation@1",
-          "when": "view == continue.continueGUIView"
+          "when": "view == zhimannamespace.continueGUIView"
         },
         {
           "command": "zhimannamespace.viewHistory",
           "group": "navigation@1",
-          "when": "view == continue.continueGUIView"
+          "when": "view == zhimannamespace.continueGUIView"
         }
       ],
       "editor/title": [
         {
           "command": "zhimannamespace.toggleFullScreen",
           "group": "navigation@1",
-          "when": "activeWebviewPanelId == continue.continueGUIView"
+          "when": "activeWebviewPanelId == zhimannamespace.continueGUIView"
         }
       ],
       "terminal/context": [
@@ -403,14 +409,14 @@
     "viewsContainers": {
       "activitybar": [
         {
-          "id": "continue",
+          "id": "zhimannamespace",
           "title": "Continue",
           "icon": "media/sidebar-icon.png"
         }
       ]
     },
     "views": {
-      "continue": [
+      "zhimannamespace": [
         {
           "type": "webview",
           "id": "zhimannamespace.continueGUIView",
@@ -421,7 +427,7 @@
     },
     "walkthroughs": [
       {
-        "id": "continue",
+        "id": "zhimannamespace",
         "title": "Getting Started",
         "description": "Learn how to use Continue",
         "steps": [
