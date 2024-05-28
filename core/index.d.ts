@@ -530,6 +530,7 @@ type ModelProvider =
   | "flowise"
   | "groq"
   | "continue-proxy"
+  | "zhiman"
   | "custom";
 
 export type ModelName =
@@ -722,6 +723,7 @@ interface ContextMenuConfig {
   fix?: string;
   optimize?: string;
   fixGrammar?: string;
+  unitTest?: string;
 }
 
 interface ModelRoles {

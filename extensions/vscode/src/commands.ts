@@ -359,6 +359,12 @@ const commandsMap: (
         "If there are any grammar or spelling mistakes in this writing, fix them. Do not make other large changes to the writing.",
       );
     },
+    "continue.unitTest": async () => {
+      streamInlineEdit(
+          "unitTest", 
+          "Write unit tests for this code. Do not change anything about the code itself."
+      );
+    },
     "continue.viewLogs": async () => {
       // Open ~/.continue/continue.log
       const logFile = path.join(os.homedir(), ".continue", "continue.log");

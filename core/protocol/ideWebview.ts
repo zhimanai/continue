@@ -51,6 +51,7 @@ export type ToWebviewFromIdeProtocol = ToWebviewFromIdeOrCoreProtocol & {
   ];
   newSessionWithPrompt: [{ prompt: string }, void];
   userInput: [{ input: string }, void];
+  unitTest: [undefined, void];
   focusContinueInput: [undefined, void];
   focusContinueInputWithoutClear: [undefined, void];
   focusContinueInputWithNewSession: [undefined, void];
