@@ -36,7 +36,7 @@ export class VsCodeExtension {
     this.diffManager = new DiffManager(context);
     this.ide = new VsCodeIde(this.diffManager);
 
-    const settings = vscode.workspace.getConfiguration("continue");
+    const settings = vscode.workspace.getConfiguration("zhimannamespace");
     const remoteConfigServerUrl = settings.get<string | undefined>(
       "remoteConfigServerUrl",
       undefined,
@@ -113,7 +113,7 @@ export class VsCodeExtension {
     // Sidebar
     context.subscriptions.push(
       vscode.window.registerWebviewViewProvider(
-        "continue.continueGUIView",
+        "zhimannamespace.continueGUIView",
         this.sidebar,
         {
           webviewOptions: { retainContextWhenHidden: true },
@@ -124,10 +124,10 @@ export class VsCodeExtension {
 
     // Indexing + pause token
     const indexingPauseToken = new PauseToken(
-      context.globalState.get<boolean>("continue.indexingPaused") === true,
+      context.globalState.get<boolean>("zhimannamespace.indexingPaused") === true,
     );
     this.webviewProtocol.on("index/setPaused", (msg) => {
-      context.globalState.update("continue.indexingPaused", msg.data);
+      context.globalState.update("zhimannamespace.indexingPaused", msg.data);
       indexingPauseToken.paused = msg.data;
     });
     this.webviewProtocol.on("index/forceReIndex", (msg) => {
@@ -165,7 +165,7 @@ export class VsCodeExtension {
       verticalDiffCodeLens.refresh.bind(verticalDiffCodeLens);
 
     // Tab autocomplete
-    const config = vscode.workspace.getConfiguration("continue");
+    const config = vscode.workspace.getConfiguration("zhimannamespace");
     const enabled = config.get<boolean>("enableTabAutocomplete");
 
     // Register inline completion provider
@@ -286,9 +286,9 @@ export class VsCodeExtension {
     this.indexingCancellationController = new AbortController();
 
     //reset all state variables
-    context.globalState.update("continue.indexingFailed", false);
-    context.globalState.update("continue.indexingProgress", 0);
-    context.globalState.update("continue.indexingDesc", "");
+    context.globalState.update("zhimannamespace.indexingFailed", false);
+    context.globalState.update("zhimannamespace.indexingProgress", 0);
+    context.globalState.update("zhimannamespace.indexingDesc", "");
 
     let err = undefined;
     for await (const update of this.indexer.refresh(
@@ -296,7 +296,7 @@ export class VsCodeExtension {
       this.indexingCancellationController.signal,
     )) {
       this.webviewProtocol.request("indexProgress", update);
-      context.globalState.update("continue.indexingProgress", update);
+      context.globalState.update("zhimannamespace.indexingProgress", update);
     }
 
     if (err) {

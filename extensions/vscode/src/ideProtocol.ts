@@ -69,7 +69,7 @@ class VsCodeIde implements IDE {
       version: vscode.version,
       remoteName: vscode.env.remoteName || "local",
       extensionVersion:
-        vscode.extensions.getExtension("continue.continue")?.packageJSON
+        vscode.extensions.getExtension("Zhiman.zhimannamespace")?.packageJSON
           .version,
     });
   }
@@ -104,7 +104,7 @@ class VsCodeIde implements IDE {
   async isTelemetryEnabled(): Promise<boolean> {
     return (
       (await vscode.workspace
-        .getConfiguration("continue")
+        .getConfiguration("zhimannamespace")
         .get("telemetryEnabled")) ?? true
     );
   }

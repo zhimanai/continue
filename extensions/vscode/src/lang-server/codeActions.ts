@@ -29,7 +29,7 @@ class ContinueQuickFixProvider implements vscode.CodeActionProvider {
         0,
       );
       quickFix.command = {
-        command: "continue.quickFix",
+        command: "zhimannamespace.quickFix",
         title: "Continue Quick Fix",
         arguments: [
           diagnostic.message,

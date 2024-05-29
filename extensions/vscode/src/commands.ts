@@ -17,7 +17,7 @@ import { VsCodeWebviewProtocol } from "./webviewProtocol";
 function getFullScreenTab() {
   const tabs = vscode.window.tabGroups.all.flatMap((tabGroup) => tabGroup.tabs);
   return tabs.find((tab) =>
-    (tab.input as any)?.viewType?.endsWith("continue.continueGUIView"),
+    (tab.input as any)?.viewType?.endsWith("zhimannamespace.continueGUIView"),
   );
 }
 
@@ -165,27 +165,27 @@ const commandsMap: (
     );
   }
   return {
-    "continue.acceptDiff": async (newFilepath?: string | vscode.Uri) => {
+    "zhimannamespace.acceptDiff": async (newFilepath?: string | vscode.Uri) => {
       if (newFilepath instanceof vscode.Uri) {
         newFilepath = newFilepath.fsPath;
       }
       verticalDiffManager.clearForFilepath(newFilepath, true);
       await diffManager.acceptDiff(newFilepath);
     },
-    "continue.rejectDiff": async (newFilepath?: string | vscode.Uri) => {
+    "zhimannamespace.rejectDiff": async (newFilepath?: string | vscode.Uri) => {
       if (newFilepath instanceof vscode.Uri) {
         newFilepath = newFilepath.fsPath;
       }
       verticalDiffManager.clearForFilepath(newFilepath, false);
       await diffManager.rejectDiff(newFilepath);
     },
-    "continue.acceptVerticalDiffBlock": (filepath?: string, index?: number) => {
+    "zhimannamespace.acceptVerticalDiffBlock": (filepath?: string, index?: number) => {
       verticalDiffManager.acceptRejectVerticalDiffBlock(true, filepath, index);
     },
-    "continue.rejectVerticalDiffBlock": (filepath?: string, index?: number) => {
+    "zhimannamespace.rejectVerticalDiffBlock": (filepath?: string, index?: number) => {
       verticalDiffManager.acceptRejectVerticalDiffBlock(false, filepath, index);
     },
-    "continue.quickFix": async (
+    "zhimannamespace.quickFix": async (
       message: string,
       code: string,
       edit: boolean,
@@ -197,19 +197,19 @@ const commandsMap: (
       });
 
       if (!edit) {
-        vscode.commands.executeCommand("continue.continueGUIView.focus");
+        vscode.commands.executeCommand("zhimannamespace.continueGUIView.focus");
       }
     },
-    "continue.focusContinueInput": async () => {
+    "zhimannamespace.focusContinueInput": async () => {
       if (!getFullScreenTab()) {
-        vscode.commands.executeCommand("continue.continueGUIView.focus");
+        vscode.commands.executeCommand("zhimannamespace.continueGUIView.focus");
       }
       sidebar.webviewProtocol?.request("focusContinueInput", undefined);
       await addHighlightedCodeToContext(false, sidebar.webviewProtocol);
     },
-    "continue.focusContinueInputWithoutClear": async () => {
+    "zhimannamespace.focusContinueInputWithoutClear": async () => {
       if (!getFullScreenTab()) {
-        vscode.commands.executeCommand("continue.continueGUIView.focus");
+        vscode.commands.executeCommand("zhimannamespace.continueGUIView.focus");
       }
       sidebar.webviewProtocol?.request(
         "focusContinueInputWithoutClear",
@@ -217,10 +217,10 @@ const commandsMap: (
       );
       await addHighlightedCodeToContext(true, sidebar.webviewProtocol);
     },
-    "continue.toggleAuxiliaryBar": () => {
+    "zhimannamespace.toggleAuxiliaryBar": () => {
       vscode.commands.executeCommand("workbench.action.toggleAuxiliaryBar");
     },
-    "continue.quickEdit": async (prompt?: string) => {
+    "zhimannamespace.quickEdit": async (prompt?: string) => {
       const selectionEmpty = vscode.window.activeTextEditor?.selection.isEmpty;
 
       const editor = vscode.window.activeTextEditor;
@@ -325,34 +325,41 @@ const commandsMap: (
         }
       }
     },
-    "continue.writeCommentsForCode": async () => {
+    "zhimannamespace.writeCommentsForCode": async () => {
       streamInlineEdit(
         "comment",
         "Write comments for this code. Do not change anything about the code itself.",
       );
     },
-    "continue.writeDocstringForCode": async () => {
+    "zhimannamespace.writeDocstringForCode": async () => {
       streamInlineEdit(
         "docstring",
         "Write a docstring for this code. Do not change anything about the code itself.",
         true,
       );
     },
-    "continue.fixCode": async () => {
+    "zhimannamespace.fixCode": async () => {
       streamInlineEdit("fix", "Fix this code");
     },
-    "continue.optimizeCode": async () => {
+    "zhimannamespace.optimizeCode": async () => {
       streamInlineEdit("optimize", "Optimize this code");
     },
-    "continue.fixGrammar": async () => {
+    "zhimannamespace.fixGrammar": async () => {
       streamInlineEdit(
         "fixGrammar",
         "If there are any grammar or spelling mistakes in this writing, fix them. Do not make other large changes to the writing.",
       );
     },
-    "continue.viewLogs": async () => {
+    "zhimannamespace.unitTest": async () => {
+      streamInlineEdit(
+        "unitTest", 
+        "Write unit tests for this code, and append to the end of the code. Do not modify the existing code.",
+	true,
+      );
+    },
+    "zhimannamespace.viewLogs": async () => {
       // Open ~/.continue/continue.log
-      const logFile = path.join(os.homedir(), ".continue", "continue.log");
+      const logFile = path.join(os.homedir(), ".continue", "zhimannamespace.log");
       // Make sure the file/directory exist
       if (!fs.existsSync(logFile)) {
         fs.mkdirSync(path.dirname(logFile), { recursive: true });
@@ -362,37 +369,37 @@ const commandsMap: (
       const uri = vscode.Uri.file(logFile);
       await vscode.window.showTextDocument(uri);
     },
-    "continue.debugTerminal": async () => {
+    "zhimannamespace.debugTerminal": async () => {
       const terminalContents = await ide.getTerminalContents();
-      vscode.commands.executeCommand("continue.continueGUIView.focus");
+      vscode.commands.executeCommand("zhimannamespace.continueGUIView.focus");
       sidebar.webviewProtocol?.request("userInput", {
         input: `I got the following error, can you please help explain how to fix it?\n\n${terminalContents.trim()}`,
       });
     },
-    "continue.hideInlineTip": () => {
+    "zhimannamespace.hideInlineTip": () => {
       vscode.workspace
-        .getConfiguration("continue")
+        .getConfiguration("zhimannamespace")
         .update("showInlineTip", false, vscode.ConfigurationTarget.Global);
     },
 
     // Commands without keyboard shortcuts
-    "continue.addModel": () => {
-      vscode.commands.executeCommand("continue.continueGUIView.focus");
+    "zhimannamespace.addModel": () => {
+      vscode.commands.executeCommand("zhimannamespace.continueGUIView.focus");
       sidebar.webviewProtocol?.request("addModel", undefined);
     },
-    "continue.openSettingsUI": () => {
-      vscode.commands.executeCommand("continue.continueGUIView.focus");
+    "zhimannamespace.openSettingsUI": () => {
+      vscode.commands.executeCommand("zhimannamespace.continueGUIView.focus");
       sidebar.webviewProtocol?.request("openSettings", undefined);
     },
-    "continue.sendMainUserInput": (text: string) => {
+    "zhimannamespace.sendMainUserInput": (text: string) => {
       sidebar.webviewProtocol?.request("userInput", {
         input: text,
       });
     },
-    "continue.shareSession": () => {
+    "zhimannamespace.shareSession": () => {
       sidebar.sendMainUserInput("/share");
     },
-    "continue.selectRange": (startLine: number, endLine: number) => {
+    "zhimannamespace.selectRange": (startLine: number, endLine: number) => {
       if (!vscode.window.activeTextEditor) {
         return;
       }
@@ -403,7 +410,7 @@ const commandsMap: (
         0,
       );
     },
-    "continue.foldAndUnfold": (
+    "zhimannamespace.foldAndUnfold": (
       foldSelectionLines: number[],
       unfoldSelectionLines: number[],
     ) => {
@@ -414,16 +421,16 @@ const commandsMap: (
         selectionLines: foldSelectionLines,
       });
     },
-    "continue.sendToTerminal": (text: string) => {
+    "zhimannamespace.sendToTerminal": (text: string) => {
       ide.runCommand(text);
     },
-    "continue.newSession": () => {
+    "zhimannamespace.newSession": () => {
       sidebar.webviewProtocol?.request("newSession", undefined);
     },
-    "continue.viewHistory": () => {
+    "zhimannamespace.viewHistory": () => {
       sidebar.webviewProtocol?.request("viewHistory", undefined);
     },
-    "continue.toggleFullScreen": () => {
+    "zhimannamespace.toggleFullScreen": () => {
       // Check if full screen is already open by checking open tabs
       const fullScreenTab = getFullScreenTab();
 
@@ -460,7 +467,7 @@ const commandsMap: (
 
       //create the full screen panel
       let panel = vscode.window.createWebviewPanel(
-        "continue.continueGUIView",
+        "zhimannamespace.continueGUIView",
         "Continue",
         vscode.ViewColumn.One,
       );
@@ -481,26 +488,26 @@ const commandsMap: (
       panel.onDidDispose(
         () => {
           sidebar.resetWebviewProtocolWebview();
-          vscode.commands.executeCommand("continue.focusContinueInput");
+          vscode.commands.executeCommand("zhimannamespace.focusContinueInput");
         },
         null,
         extensionContext.subscriptions,
       );
     },
-    "continue.openConfigJson": () => {
+    "zhimannamespace.openConfigJson": () => {
       ide.openFile(getConfigJsonPath());
     },
-    "continue.selectFilesAsContext": (
+    "zhimannamespace.selectFilesAsContext": (
       firstUri: vscode.Uri,
       uris: vscode.Uri[],
     ) => {
-      vscode.commands.executeCommand("continue.continueGUIView.focus");
+      vscode.commands.executeCommand("zhimannamespace.continueGUIView.focus");
 
       for (const uri of uris) {
         addEntireFileToContext(uri, false, sidebar.webviewProtocol);
       }
     },
-    "continue.updateAllReferences": (filepath: vscode.Uri) => {
+    "zhimannamespace.updateAllReferences": (filepath: vscode.Uri) => {
       // Get the cursor position in the editor
       const editor = vscode.window.activeTextEditor;
       if (!editor) {
@@ -511,14 +518,14 @@ const commandsMap: (
         `/references ${filepath.fsPath} ${position.line} ${position.character}`,
       );
     },
-    "continue.logAutocompleteOutcome": (
+    "zhimannamespace.logAutocompleteOutcome": (
       completionId: string,
       completionProvider: CompletionProvider,
     ) => {
       completionProvider.accept(completionId);
     },
-    "continue.toggleTabAutocompleteEnabled": () => {
-      const config = vscode.workspace.getConfiguration("continue");
+    "zhimannamespace.toggleTabAutocompleteEnabled": () => {
+      const config = vscode.workspace.getConfiguration("zhimannamespace");
       const enabled = config.get("enableTabAutocomplete");
       config.update(
         "enableTabAutocomplete",

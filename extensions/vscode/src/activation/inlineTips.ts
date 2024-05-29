@@ -3,7 +3,7 @@ import { getMetaKeyName } from "../util/util";
 
 const inlineTipDecoration = vscode.window.createTextEditorDecorationType({
   after: {
-    contentText: `Add to chat (${getMetaKeyName()}+L) | Edit highlighted code (${getMetaKeyName()}+I).`,
+    contentText: `把代码加入到对话 (${getMetaKeyName()}+L) | 编辑高亮的代码 (${getMetaKeyName()}+I).`,
     color: "#888",
     margin: "0 0 0 6em",
     fontWeight: "bold",
@@ -12,7 +12,7 @@ const inlineTipDecoration = vscode.window.createTextEditorDecorationType({
 
 function showInlineTip() {
   return vscode.workspace
-    .getConfiguration("continue")
+    .getConfiguration("zhimannamespace")
     .get<boolean>("showInlineTip");
 }
 
@@ -32,7 +32,7 @@ function handleSelectionChange(e: vscode.TextEditorSelectionChangeEvent) {
   const line = Math.max(0, selection.start.line - 1);
 
   const hoverMarkdown = new vscode.MarkdownString(
-    `Click [here](command:continue.hideInlineTip) to hide these suggestions`,
+    `点击 [这里](command:zhimannamespace.hideInlineTip)，隐藏此快捷键提示`,
   );
   hoverMarkdown.isTrusted = true;
   hoverMarkdown.supportHtml = true;
@@ -50,7 +50,7 @@ function handleSelectionChange(e: vscode.TextEditorSelectionChangeEvent) {
 const emptyFileTooltipDecoration = vscode.window.createTextEditorDecorationType(
   {
     after: {
-      contentText: `Use ${getMetaKeyName()}+I to generate code`,
+      contentText: `使用组合建 ${getMetaKeyName()}+I 生成代码`,
       color: "#888",
       margin: "2em 0 0 0",
       fontStyle: "italic",

@@ -171,7 +171,7 @@ export class VsCodeWebviewProtocol {
     });
     this.on("toggleDevTools", (msg) => {
       vscode.commands.executeCommand("workbench.action.toggleDevTools");
-      vscode.commands.executeCommand("continue.viewLogs");
+      vscode.commands.executeCommand("zhimannamespace.viewLogs");
     });
     this.on("reloadWindow", (msg) => {
       vscode.commands.executeCommand("workbench.action.reloadWindow");
@@ -180,7 +180,7 @@ export class VsCodeWebviewProtocol {
       vscode.commands.executeCommand("workbench.action.focusActiveEditorGroup");
     });
     this.on("toggleFullScreen", (msg) => {
-      vscode.commands.executeCommand("continue.toggleFullScreen");
+      vscode.commands.executeCommand("zhimannamespace.toggleFullScreen");
     });
 
     // IDE

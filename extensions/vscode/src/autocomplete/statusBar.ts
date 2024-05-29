@@ -35,13 +35,13 @@ export function setupStatusBar(
     ? "$(loading~spin) Continue"
     : statusBarItemText(enabled);
   statusBarItem.tooltip = statusBarItemTooltip(enabled);
-  statusBarItem.command = "continue.toggleTabAutocompleteEnabled";
+  statusBarItem.command = "zhimannamespace.toggleTabAutocompleteEnabled";
 
   statusBarItem.show();
 
   vscode.workspace.onDidChangeConfiguration((event) => {
-    if (event.affectsConfiguration("continue")) {
-      const config = vscode.workspace.getConfiguration("continue");
+    if (event.affectsConfiguration("zhimannamespace")) {
+      const config = vscode.workspace.getConfiguration("zhimannamespace");
       const enabled = config.get<boolean>("enableTabAutocomplete");
       setupStatusBar(enabled);
     }
