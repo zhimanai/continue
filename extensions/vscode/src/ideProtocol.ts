@@ -376,7 +376,7 @@ class VsCodeIde implements IDE {
   }
 
   getIdeSettings(): IdeSettings {
-    const settings = vscode.workspace.getConfiguration("continue");
+    const settings = vscode.workspace.getConfiguration("zhimannamespace");
     const remoteConfigServerUrl = settings.get<string | undefined>(
       "remoteConfigServerUrl",
       undefined,

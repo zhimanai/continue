@@ -1,7 +1,7 @@
 {
   "name": "zhimannamespace",
   "icon": "media/icon.png",
-  "version": "1.0.102",
+  "version": "1.0.103",
   "repository": {
     "type": "git",
     "url": "https://github.com/zhimanai/continue"
