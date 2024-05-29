@@ -30,7 +30,7 @@ export class ContinueCompletionProvider
       if (val === "Documentation") {
         vscode.env.openExternal(
           vscode.Uri.parse(
-            "https://docs.continue.dev/walkthroughs/tab-autocomplete",
+            "https://docs.puiq3hfq3.dev/walkthroughs/tab-autocomplete",
           ),
         );
       } else if (val === "Download Ollama") {
@@ -75,7 +75,7 @@ export class ContinueCompletionProvider
   ): ProviderResult<InlineCompletionItem[] | InlineCompletionList> {
     const enableTabAutocomplete =
       vscode.workspace
-        .getConfiguration("continue")
+        .getConfiguration("zhimannamespace")
         .get<boolean>("enableTabAutocomplete") || false;
     if (token.isCancellationRequested || !enableTabAutocomplete) {
       return null;
@@ -247,7 +247,7 @@ export class ContinueCompletionProvider
         completionRange,
         {
           title: "Log Autocomplete Outcome",
-          command: "continue.logAutocompleteOutcome",
+          command: "zhimannamespace.logAutocompleteOutcome",
           arguments: [input.completionId, this.completionProvider],
         },
       );

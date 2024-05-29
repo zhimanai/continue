@@ -134,8 +134,8 @@ export class VsCodeIdeUtils {
   showMultiFileEdit(edits: FileEdit[]) {
     vscode.commands.executeCommand("workbench.action.closeAuxiliaryBar");
     const panel = vscode.window.createWebviewPanel(
-      "continue.continueGUIView",
-      "Continue",
+      "zhimannamespace.continueGUIView",
+      "Zhiman",
       vscode.ViewColumn.One,
     );
     // panel.webview.html = this.sidebar.getSidebarContent(
@@ -182,7 +182,7 @@ export class VsCodeIdeUtils {
 
   async getUserSecret(key: string) {
     // Check if secret already exists in VS Code settings (global)
-    let secret = vscode.workspace.getConfiguration("continue").get(key);
+    let secret = vscode.workspace.getConfiguration("zhimannamespace").get(key);
     if (typeof secret !== "undefined" && secret !== null) {
       return secret;
     }
@@ -195,7 +195,7 @@ export class VsCodeIdeUtils {
 
     // Add secret to VS Code settings
     vscode.workspace
-      .getConfiguration("continue")
+      .getConfiguration("zhimannamespace")
       .update(key, secret, vscode.ConfigurationTarget.Global);
 
     return secret;

@@ -10,7 +10,7 @@ import { VsCodeWebviewProtocol } from "./webviewProtocol";
 export class ContinueGUIWebviewViewProvider
   implements vscode.WebviewViewProvider
 {
-  public static readonly viewType = "continue.continueGUIView";
+  public static readonly viewType = "zhimannamespace.continueGUIView";
   public webviewProtocol: VsCodeWebviewProtocol;
 
   resolveWebviewView(

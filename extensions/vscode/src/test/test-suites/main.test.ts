@@ -14,7 +14,7 @@ describe("Extension Test Suite", () => {
     // Current problem is that this is never resolved, because
     // this file is separate from the extension.
     const extension = await vscodeExtensionPromise;
-    await vscode.commands.executeCommand("continue.continueGUIView.focus");
+    await vscode.commands.executeCommand("zhimannamespace.continueGUIView.focus");
     await new Promise((resolve) => setTimeout(resolve, 3_000));
     const title = await extension.webviewProtocol.request(
       "getDefaultModelTitle",

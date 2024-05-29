@@ -721,6 +721,7 @@ interface ContextMenuConfig {
   fix?: string;
   optimize?: string;
   fixGrammar?: string;
+  unitTest?: string;
 }
 
 interface ModelRoles {
