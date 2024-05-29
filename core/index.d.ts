@@ -374,6 +374,13 @@ export interface IndexTag extends BranchAndDir {
   artifactId: string;
 }
 
+export enum FileType {
+  Unkown = 0,
+  File = 1,
+  Directory = 2,
+  SymbolicLink = 64,
+}
+
 export interface IDE {
   getIdeInfo(): Promise<IdeInfo>;
   getDiff(): Promise<string>;
@@ -415,9 +422,14 @@ export interface IDE {
   subprocess(command: string): Promise<[string, string]>;
   getProblems(filepath?: string | undefined): Promise<Problem[]>;
   getBranch(dir: string): Promise<string>;
-  getStats(directory: string): Promise<{ [path: string]: number }>;
   getTags(artifactId: string): Promise<IndexTag[]>;
   getRepoName(dir: string): Promise<string | undefined>;
+  errorPopup(message: string): Promise<void>;
+  infoPopup(message: string): Promise<void>;
+
+  getGitRootPath(dir: string): Promise<string | undefined>;
+  listDir(dir: string): Promise<[string, FileType][]>;
+  getLastModified(files: string[]): Promise<{ [path: string]: number }>;
 }
 
 // Slash Commands
@@ -568,6 +580,7 @@ export type ModelName =
   // Gemini
   | "gemini-pro"
   | "gemini-1.5-pro-latest"
+  | "gemini-1.5-flash-latest"
   // Mistral
   | "mistral-tiny"
   | "mistral-small"
@@ -714,7 +727,7 @@ interface ModelRoles {
   inlineEdit?: string;
 }
 
-interface ExperimantalConfig {
+interface ExperimentalConfig {
   contextMenuPrompts?: ContextMenuConfig;
   modelRoles?: ModelRoles;
   defaultContext?: "activeFile"[];
@@ -738,7 +751,7 @@ export interface SerializedContinueConfig {
   tabAutocompleteOptions?: Partial<TabAutocompleteOptions>;
   ui?: ContinueUIConfig;
   reranker?: RerankerDescription;
-  experimental?: ExperimantalConfig;
+  experimental?: ExperimentalConfig;
 }
 
 export type ConfigMergeType = "merge" | "overwrite";
@@ -784,7 +797,7 @@ export interface Config {
   /** Options for the reranker */
   reranker?: RerankerDescription | Reranker;
   /** Experimental configuration */
-  experimental?: ExperimantalConfig;
+  experimental?: ExperimentalConfig;
 }
 
 export interface ContinueConfig {
@@ -803,7 +816,7 @@ export interface ContinueConfig {
   tabAutocompleteOptions?: Partial<TabAutocompleteOptions>;
   ui?: ContinueUIConfig;
   reranker?: Reranker;
-  experimental?: ExperimantalConfig;
+  experimental?: ExperimentalConfig;
 }
 
 export interface BrowserSerializedContinueConfig {
@@ -820,5 +833,5 @@ export interface BrowserSerializedContinueConfig {
   embeddingsProvider?: string;
   ui?: ContinueUIConfig;
   reranker?: RerankerDescription;
-  experimental?: ExperimantalConfig;
+  experimental?: ExperimentalConfig;
 }

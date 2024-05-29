@@ -19,6 +19,7 @@ import {
   CustomLLM,
   EmbeddingsProviderDescription,
   IContextProvider,
+  IDE,
   IdeType,
   ModelDescription,
   Reranker,
@@ -31,7 +32,7 @@ import { AllEmbeddingsProviders } from "../indexing/embeddings/index.js";
 import { BaseLLM } from "../llm/index.js";
 import CustomLLMClass from "../llm/llms/CustomLLM.js";
 import { llmFromDescription } from "../llm/llms/index.js";
-import { IdeSettings } from "../protocol.js";
+import { IdeSettings } from "../protocol/ideWebview.js";
 import { fetchwithRequestOptions } from "../util/fetchWithOptions.js";
 import { copyOf } from "../util/index.js";
 import mergeJson from "../util/merge.js";
@@ -42,6 +43,7 @@ import {
   getConfigJsonPathForRemote,
   getConfigTsPath,
   getContinueDotEnv,
+  readAllGlobalPromptFiles,
 } from "../util/paths.js";
 import {
   defaultContextProvidersJetBrains,
@@ -49,11 +51,12 @@ import {
   defaultSlashCommandsJetBrains,
   defaultSlashCommandsVscode,
 } from "./default.js";
+import { getPromptFiles, slashCommandFromPromptFile } from "./promptFile.js";
 const { execSync } = require("child_process");
 
 function resolveSerializedConfig(filepath: string): SerializedContinueConfig {
   let content = fs.readFileSync(filepath, "utf8");
-  let config = JSON.parse(content) as SerializedContinueConfig;
+  const config = JSON.parse(content) as SerializedContinueConfig;
   if (config.env && Array.isArray(config.env)) {
     const env = {
       ...process.env,
@@ -62,7 +65,7 @@ function resolveSerializedConfig(filepath: string): SerializedContinueConfig {
 
     config.env.forEach((envVar) => {
       if (envVar in env) {
-        content = content.replaceAll(
+        content = (content as any).replaceAll(
           new RegExp(`"${envVar}"`, "g"),
           `"${env[envVar]}"`,
         );
@@ -130,9 +133,10 @@ function loadSerializedConfig(
   return config;
 }
 
-function serializedToIntermediateConfig(
+async function serializedToIntermediateConfig(
   initial: SerializedContinueConfig,
-): Config {
+  ide: IDE,
+): Promise<Config> {
   const slashCommands: SlashCommand[] = [];
   for (const command of initial.slashCommands || []) {
     const newCommand = slashCommandFromDescription(command);
@@ -142,6 +146,24 @@ function serializedToIntermediateConfig(
   }
   for (const command of initial.customCommands || []) {
     slashCommands.push(slashFromCustomCommand(command));
+  }
+
+  const workspaceDirs = await ide.getWorkspaceDirs();
+  const promptFiles = (
+    await Promise.all(
+      workspaceDirs.map((dir) =>
+        getPromptFiles(ide, path.join(dir, ".prompts")),
+      ),
+    )
+  )
+    .flat()
+    .filter(({ path }) => path.endsWith(".prompt"));
+
+  // Also read from ~/.continue/.prompts
+  promptFiles.push(...readAllGlobalPromptFiles());
+
+  for (const file of promptFiles) {
+    slashCommands.push(slashCommandFromPromptFile(file.path, file.content));
   }
 
   const config: Config = {
@@ -168,7 +190,7 @@ function isContextProviderWithParams(
 /** Only difference between intermediate and final configs is the `models` array */
 async function intermediateToFinalConfig(
   config: Config,
-  readFile: (filepath: string) => Promise<string>,
+  ide: IDE,
   ideSettings: IdeSettings,
   uniqueId: string,
   writeLog: (log: string) => Promise<void>,
@@ -179,7 +201,7 @@ async function intermediateToFinalConfig(
     if (isModelDescription(desc)) {
       const llm = await llmFromDescription(
         desc,
-        readFile,
+        ide.readFile.bind(ide),
         uniqueId,
         ideSettings,
         writeLog,
@@ -199,9 +221,9 @@ async function intermediateToFinalConfig(
                 {
                   ...desc,
                   model: modelName,
-                  title: llm.title + " - " + modelName,
+                  title: `${llm.title} - ${modelName}`,
                 },
-                readFile,
+                ide.readFile.bind(ide),
                 uniqueId,
                 ideSettings,
                 writeLog,
@@ -261,7 +283,7 @@ async function intermediateToFinalConfig(
     if (isModelDescription(config.tabAutocompleteModel)) {
       autocompleteLlm = await llmFromDescription(
         config.tabAutocompleteModel,
-        readFile,
+        ide.readFile.bind(ide),
         uniqueId,
         ideSettings,
         writeLog,
@@ -296,14 +318,20 @@ async function intermediateToFinalConfig(
     const { provider, ...options } = embeddingsProviderDescription;
     const embeddingsProviderClass = AllEmbeddingsProviders[provider];
     if (embeddingsProviderClass) {
-      config.embeddingsProvider = new embeddingsProviderClass(
-        options,
-        (url: string | URL, init: any) =>
-          fetchwithRequestOptions(url, init, {
-            ...config.requestOptions,
-            ...options.requestOptions,
-          }),
-      );
+      if (
+        embeddingsProviderClass.name === "_TransformersJsEmbeddingsProvider"
+      ) {
+        config.embeddingsProvider = new embeddingsProviderClass();
+      } else {
+        config.embeddingsProvider = new embeddingsProviderClass(
+          options,
+          (url: string | URL, init: any) =>
+            fetchwithRequestOptions(url, init, {
+              ...config.requestOptions,
+              ...options.requestOptions,
+            }),
+        );
+      }
     }
   }
 
@@ -414,14 +442,13 @@ async function buildConfigTs() {
   try {
     if (process.env.IS_BINARY === "true") {
       execSync(
-        escapeSpacesInPath(path.dirname(process.execPath)) +
-          `/esbuild${
-            getTarget().startsWith("win32") ? ".exe" : ""
-          } ${escapeSpacesInPath(
-            getConfigTsPath(),
-          )} --bundle --outfile=${escapeSpacesInPath(
-            getConfigJsPath(),
-          )} --platform=node --format=cjs --sourcemap --external:fetch --external:fs --external:path --external:os --external:child_process`,
+        `${escapeSpacesInPath(path.dirname(process.execPath))}/esbuild${
+          getTarget().startsWith("win32") ? ".exe" : ""
+        } ${escapeSpacesInPath(
+          getConfigTsPath(),
+        )} --bundle --outfile=${escapeSpacesInPath(
+          getConfigJsPath(),
+        )} --platform=node --format=cjs --sourcemap --external:fetch --external:fs --external:path --external:os --external:child_process`,
       );
     } else {
       // Dynamic import esbuild so potentially disastrous errors can be caught
@@ -439,7 +466,7 @@ async function buildConfigTs() {
     }
   } catch (e) {
     console.log(
-      "Build error. Please check your ~/.continue/config.ts file: " + e,
+      `Build error. Please check your ~/.continue/config.ts file: ${e}`,
     );
     return undefined;
   }
@@ -451,7 +478,7 @@ async function buildConfigTs() {
 }
 
 async function loadFullConfigNode(
-  readFile: (filepath: string) => Promise<string>,
+  ide: IDE,
   workspaceConfigs: ContinueRcJson[],
   ideSettings: IdeSettings,
   ideType: IdeType,
@@ -459,7 +486,7 @@ async function loadFullConfigNode(
   writeLog: (log: string) => Promise<void>,
 ): Promise<ContinueConfig> {
   let serialized = loadSerializedConfig(workspaceConfigs, ideSettings, ideType);
-  let intermediate = serializedToIntermediateConfig(serialized);
+  let intermediate = await serializedToIntermediateConfig(serialized, ide);
 
   const configJsContents = await buildConfigTs();
   if (configJsContents) {
@@ -496,7 +523,7 @@ async function loadFullConfigNode(
 
   const finalConfig = await intermediateToFinalConfig(
     intermediate,
-    readFile,
+    ide,
     ideSettings,
     uniqueId,
     writeLog,

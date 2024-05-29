@@ -1,21 +1,18 @@
-const { execSync } = require("child_process");
 const fs = require("fs");
 const ncp = require("ncp").ncp;
 const path = require("path");
 const { rimrafSync } = require("rimraf");
-
-function execCmdSync(cmd) {
-  try {
-    execSync(cmd);
-  } catch (err) {
-    console.error(`Error executing command '${cmd}': `, err.output.toString());
-    process.exit(1);
-  }
-}
+const {
+  validateFilesPresent,
+  execCmdSync,
+} = require("../../../scripts/util/index");
 
 // Clear folders that will be packaged to ensure clean slate
 rimrafSync(path.join(__dirname, "..", "bin"));
 rimrafSync(path.join(__dirname, "..", "out"));
+fs.mkdirSync(path.join(__dirname, "..", "out", "node_modules"), {
+  recursive: true,
+});
 
 // Get the target to package for
 let target = undefined;
@@ -102,16 +99,16 @@ const exe = os === "win32" ? ".exe" : "";
   }
 
   // Install node_modules //
-  // execCmdSync("pnpm install");
-  // console.log("[info] pnpm install in extensions/vscode completed");
+  execCmdSync("npm install");
+  console.log("[info] npm install in extensions/vscode completed");
 
   process.chdir("../../gui");
 
-  execCmdSync("pnpm install");
-  console.log("[info] pnpm install in gui completed");
+  execCmdSync("npm install");
+  console.log("[info] npm install in gui completed");
 
   if (ghAction()) {
-    execCmdSync("pnpm run build");
+    execCmdSync("npm run build");
   }
 
   // Copy over the dist folder to the Intellij extension //
@@ -161,12 +158,19 @@ const exe = os === "win32" ? ".exe" : "";
   // Then copy over the dist folder to the VSCode extension //
   const vscodeGuiPath = path.join("../extensions/vscode/gui");
   fs.mkdirSync(vscodeGuiPath, { recursive: true });
-  ncp("dist", vscodeGuiPath, (error) => {
-    if (error) {
-      console.log("Error copying React app build to VSCode extension: ", error);
-      throw error;
-    }
-    console.log("Copied gui build to VSCode extension");
+  await new Promise((resolve, reject) => {
+    ncp("dist", vscodeGuiPath, (error) => {
+      if (error) {
+        console.log(
+          "Error copying React app build to VSCode extension: ",
+          error,
+        );
+        reject(error);
+      } else {
+        console.log("Copied gui build to VSCode extension");
+        resolve();
+      }
+    });
   });
 
   if (!fs.existsSync(path.join("dist", "assets", "index.js"))) {
@@ -305,11 +309,16 @@ const exe = os === "win32" ? ".exe" : "";
     return target?.startsWith("win");
   }
 
-  async function installNodeModuleInTempDirAndCopyToCurrent(package, toCopy) {
-    console.log(`Copying ${package} to ${toCopy}`);
+  async function installNodeModuleInTempDirAndCopyToCurrent(
+    packageName,
+    toCopy,
+  ) {
+    console.log(`Copying ${packageName} to ${toCopy}`);
     // This is a way to install only one package without npm trying to install all the dependencies
     // Create a temporary directory for installing the package
-    const tempDir = `/tmp/continue-node_modules-${toCopy}`;
+    const adjustedName = packageName.replace(/^@/, "").replace("/", "-");
+
+    const tempDir = `/tmp/continue-node_modules-${adjustedName}`;
     const currentDir = process.cwd();
 
     // Remove the dir we will be copying to
@@ -323,12 +332,16 @@ const exe = os === "win32" ? ".exe" : "";
       process.chdir(tempDir);
 
       // Initialize a new package.json and install the package
-      execCmdSync(`npm init -y && npm i -f ${package} --no-save`);
+      execCmdSync(`npm init -y && npm i -f ${packageName} --no-save`);
 
       console.log(
-        `Contents of: ${package}`,
+        `Contents of: ${packageName}`,
         fs.readdirSync(path.join(tempDir, "node_modules", toCopy)),
       );
+
+      // Without this it seems the file isn't completely written to disk
+      // Ideally we validate file integrity in the validation at the end
+      await new Promise((resolve) => setTimeout(resolve, 2000));
 
       // Copy the installed package back to the current directory
       await new Promise((resolve, reject) => {
@@ -338,7 +351,10 @@ const exe = os === "win32" ? ".exe" : "";
           { dereference: true },
           (error) => {
             if (error) {
-              console.error(`[error] Error copying ${package} package`, error);
+              console.error(
+                `[error] Error copying ${packageName} package`,
+                error,
+              );
               reject(error);
             } else {
               resolve();
@@ -411,6 +427,7 @@ const exe = os === "win32" ? ".exe" : "";
     );
   }
 
+  console.log("[info] Copying sqlite node binding from core");
   await new Promise((resolve, reject) => {
     ncp(
       path.join(__dirname, "../../../core/node_modules/sqlite3/build"),
@@ -428,7 +445,12 @@ const exe = os === "win32" ? ".exe" : "";
   });
 
   // Copy node_modules for pre-built binaries
-  const NODE_MODULES_TO_COPY = ["esbuild", "@esbuild", "@lancedb", "@vscode"];
+  const NODE_MODULES_TO_COPY = [
+    "esbuild",
+    "@esbuild",
+    "@lancedb",
+    "@vscode/ripgrep",
+  ];
   fs.mkdirSync("out/node_modules", { recursive: true });
 
   await Promise.all(
@@ -445,6 +467,7 @@ const exe = os === "win32" ? ".exe" : "";
                 console.error(`[error] Error copying ${mod}`, error);
                 reject(error);
               } else {
+                console.log(`[info] Copied ${mod}`);
                 resolve();
               }
             },
@@ -462,14 +485,7 @@ const exe = os === "win32" ? ".exe" : "";
   );
 
   // Validate the all of the necessary files are present
-  validateFilesPresent();
-})();
-
-function validateFilesPresent() {
-  // This script verifies after pacakging that necessary files are in the correct locations
-  // In many cases just taking a sample file from the folder when they are all roughly the same thing
-
-  const pathsToVerify = [
+  validateFilesPresent([
     // Queries used to create the index for @code context provider
     "tree-sitter/code-snippet-queries/tree-sitter-c_sharp-tags.scm",
 
@@ -480,9 +496,9 @@ function validateFilesPresent() {
     `bin/napi-v3/${os}/${arch}/onnxruntime_binding.node`,
     `bin/napi-v3/${os}/${arch}/${
       os === "darwin"
-        ? "libonnxruntime.1.17.3.dylib"
+        ? "libonnxruntime.1.14.0.dylib"
         : os === "linux"
-          ? "libonnxruntime.so.1.17.3"
+          ? "libonnxruntime.so.1.14.0"
           : "onnxruntime.dll"
     }`,
     "builtin-themes/dark_modern.json",
@@ -532,52 +548,5 @@ function validateFilesPresent() {
     }/index.node`,
     `out/node_modules/esbuild/lib/main.js`,
     `out/node_modules/esbuild/bin/esbuild`,
-  ];
-
-  let missingFiles = [];
-  for (const path of pathsToVerify) {
-    if (!fs.existsSync(path)) {
-      const parentFolder = path.split("/").slice(0, -1).join("/");
-      const grandparentFolder = path.split("/").slice(0, -2).join("/");
-      const grandGrandparentFolder = path.split("/").slice(0, -3).join("/");
-
-      console.error(`File ${path} does not exist`);
-      if (!fs.existsSync(parentFolder)) {
-        console.error(`Parent folder ${parentFolder} does not exist`);
-      } else {
-        console.error(
-          "Contents of parent folder:",
-          fs.readdirSync(parentFolder),
-        );
-      }
-      if (!fs.existsSync(grandparentFolder)) {
-        console.error(`Grandparent folder ${grandparentFolder} does not exist`);
-        if (!fs.existsSync(grandGrandparentFolder)) {
-          console.error(
-            `Grandgrandparent folder ${grandGrandparentFolder} does not exist`,
-          );
-        } else {
-          console.error(
-            "Contents of grandgrandparent folder:",
-            fs.readdirSync(grandGrandparentFolder),
-          );
-        }
-      } else {
-        console.error(
-          "Contents of grandparent folder:",
-          fs.readdirSync(grandparentFolder),
-        );
-      }
-
-      missingFiles.push(path);
-    }
-  }
-
-  if (missingFiles.length > 0) {
-    throw new Error(
-      `The following files were missing:\n- ${missingFiles.join("\n- ")}`,
-    );
-  } else {
-    console.log("All paths exist");
-  }
-}
+  ]);
+})();
