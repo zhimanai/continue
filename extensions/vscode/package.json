@@ -55,7 +55,7 @@
         "zhimannamespace.telemetryEnabled": {
           "type": "boolean",
           "default": false,
-          "markdownDescription": "Continue collects anonymous usage data, cleaned of PII, to help us improve the product for our users. Read more  at [continue.dev › Telemetry](https://docs.continue.dev/telemetry)."
+          "markdownDescription": "Continue collects anonymous usage data, cleaned of PII, to help us improve the product for our users. Read more  at [continue.dev › Telemetry](https://docs.puiq3hfq3.dev/telemetry)."
         },
         "zhimannamespace.showInlineTip": {
           "type": "boolean",
@@ -65,7 +65,7 @@
         "zhimannamespace.enableTabAutocomplete": {
           "type": "boolean",
           "default": true,
-          "markdownDescription": "Enable Continue's tab autocomplete feature. Read our walkthrough to learn about configuration and how to share feedback: [continue.dev › Walkthrough: Tab Autocomplete](https://docs.continue.dev/walkthroughs/tab-autocomplete)"
+          "markdownDescription": "Enable Continue's tab autocomplete feature. Read our walkthrough to learn about configuration and how to share feedback: [continue.dev › Walkthrough: Tab Autocomplete](https://docs.puiq3hfq3.dev/walkthroughs/tab-autocomplete)"
         },
         "zhimannamespace.remoteConfigServerUrl": {
           "type": "string",
