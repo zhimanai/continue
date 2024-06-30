@@ -36,13 +36,10 @@ function AddDocsDialog() {
 
   return (
     <div className="p-4">
-      <h3>Add Docs</h3>
+      <h3>{t('add-docs')}</h3>
 
       <p>
-        Continue pre-indexes many common documentation sites, but if there's one
-        you don't see in the dropdown, enter the URL here. Continue's indexing
-        engine will crawl the site and generate embeddings so that you can ask
-        questions.
+        {t('continue-pre-indexes-many-common-documentation-sites-but-if-theres-one-you-dont-see-in-the-dropdown-enter-the-url-here-continues-indexing-engine-will-crawl-the-site-and-generate-embeddings-so-that-you-can-ask-questions')}
       </p>
 
       <Input
@@ -57,7 +54,7 @@ function AddDocsDialog() {
       />
       <Input
         type="text"
-        placeholder="Title"
+        placeholder={t('title')}
         value={docsTitle}
         onChange={(e) => setDocsTitle(e.target.value)}
       />
@@ -81,7 +78,7 @@ function AddDocsDialog() {
           posthog.capture("add_docs", { url: docsUrl });
         }}
       >
-        Done
+        {t('done')}
       </Button>
     </div>
   );

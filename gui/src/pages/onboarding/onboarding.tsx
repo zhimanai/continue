@@ -1,5 +1,7 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
+
 import { greenButtonColor } from "../../components";
 import { IdeMessengerContext } from "../../context/IdeMessenger";
 import { setLocalStorage } from "../../util/localStorage";
@@ -15,11 +17,14 @@ function Onboarding() {
 
   const [selected, setSelected] = useState(-1);
 
+  const { t } = useTranslation();
+
+
   return (
     <div className="p-2 max-w-96 mt-16 mx-auto">
-      <h1 className="text-center">Welcome to Continue</h1>
+      <h1 className="text-center">{t('welcome-to-continue')}</h1>
       <p className="text-center pb-2">
-        Let's find the setup that works best for you
+        {t('lets-find-the-setup-that-works-best-for-you')}
       </p>
       <Div
         color={"#be841b"}
@@ -32,11 +37,9 @@ function Onboarding() {
         onMouseEnter={() => setHovered0(true)}
         onMouseLeave={() => setHovered0(false)}
       >
-        <h3>✨ Cloud models</h3>
+        <h3>✨ {t('cloud-models')}</h3>
         <p>
-          This is the best experience. Continue will use the strongest available
-          commercial models to index code and answer questions. Code is only
-          ever stored locally.
+          {t('this-is-the-best-experience-continue-will-use-the-strongest-available-commercial-models-to-index-code-and-answer-questions-code-is-only-ever-stored-locally')}
         </p>
       </Div>
       {selected === 0 && (
@@ -62,10 +65,9 @@ function Onboarding() {
         onMouseEnter={() => setHovered1(true)}
         onMouseLeave={() => setHovered1(false)}
       >
-        <h3>🔒 Local models</h3>
+        <h3>🔒 {t('local-models')}</h3>
         <p>
-          No code will leave your computer, but less powerful models are used.
-          Works with Ollama, LM Studio and others.
+          {t('no-code-will-leave-your-computer-but-less-powerful-models-are-used-works-with-ollama-lm-studio-and-others')}
         </p>
       </Div>
       {selected === 1 && (
@@ -99,28 +101,27 @@ function Onboarding() {
           ideMessenger.post("openConfigJson", undefined);
         }}
       >
-        <h3>⚙️ Your own models</h3>
+        <h3>⚙️ {t('your-own-models')}</h3>
         <p>
-          Continue lets you use your own API key or self-hosted LLMs.{" "}
+          {t('continue-lets-you-use-your-own-api-key-or-self-hosted-llms')}{" "}
           <a href="https://docs.continue.dev/customization/overview">
-            Read the docs
+            {t('read-the-docs')}
           </a>{" "}
-          to learn more about using config.json to customize Continue. This can
-          always be done later.
+          {t('to-learn-more-about-using-config-json-to-customize-continue-this-can-always-be-done-later')}
         </p>
       </Div>
       {selected === 2 && (
         <p className="px-3">
-          Use <code>config.json</code> to configure your own{" "}
-          <a href="https://docs.continue.dev/model-setup/overview">models</a>,{" "}
+          {t('use')} <code>config.json</code> {t('to-configure-your-own')}{" "}
+          <a href="https://docs.continue.dev/model-setup/overview">{t('models')}</a>,{" "}
           <a href="https://docs.continue.dev/customization/context-providers">
-            context providers
+            {t('context-providers')}
           </a>
           ,{" "}
           <a href="https://docs.continue.dev/customization/slash-commands">
-            slash commands
+            {t('slash-commands')}
           </a>
-          , and <a href="https://docs.continue.dev/reference/config">more</a>.
+          {t('and')} <a href="https://docs.continue.dev/reference/config">{t('more')}</a>.
         </p>
       )}
 
@@ -152,7 +153,7 @@ function Onboarding() {
             }
           }}
         >
-          Continue
+          {t('continue-1')}
         </StyledButton>
       </div>
     </div>

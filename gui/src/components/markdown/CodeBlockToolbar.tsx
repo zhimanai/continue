@@ -83,10 +83,10 @@ function CodeBlockToolBar(props: CodeBlockToolBarProps) {
           <HeaderButtonWithText
             text={
               isTerminalCodeBlock(props.language, props.text)
-                ? "Run in terminal"
+                ? t('run-in-terminal')
                 : applying
-                  ? "Applying..."
-                  : "Apply to current file"
+                  ? t('applying')
+                  : t('apply-to-current-file')
             }
             disabled={applying}
             style={{ backgroundColor: vscEditorBackground }}

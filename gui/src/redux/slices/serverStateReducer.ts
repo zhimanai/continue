@@ -8,15 +8,15 @@ import {
 const TEST_SLASH_COMMANDS = [
   {
     name: "edit",
-    description: "Edit the code",
+    description: t('edit-the-code'),
   },
   {
     name: "cmd",
-    description: "Generate a command",
+    description: t('generate-a-command'),
   },
   {
     name: "help",
-    description: "Get help using Continue",
+    description: t('get-help-using-continue'),
   },
 ];
 
@@ -52,8 +52,8 @@ export const serverStateSlice = createSlice({
     ) => {
       state.slashCommands = [
         ...action.payload,
-        { name: "codebase", description: "Retrieve codebase context" },
-        { name: "so", description: "Search StackOverflow" },
+        { name: "codebase", description: t('retrieve-codebase-context') },
+        { name: "so", description: t('search-stackoverflow') },
       ];
     },
     setContextProviders: (

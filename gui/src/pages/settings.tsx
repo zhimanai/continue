@@ -152,7 +152,7 @@ function Settings() {
             onClick={submitAndLeave}
             className="inline-block ml-4 cursor-pointer"
           />
-          <h3 className="text-lg font-bold m-2 inline-block">Settings</h3>
+          <h3 className="text-lg font-bold m-2 inline-block">{t('settings')}</h3>
           <ConfigJsonButton
             onClick={() => {
               ideMessenger.post("showFile", {
@@ -163,32 +163,28 @@ function Settings() {
               });
             }}
           >
-            Open config.json
+            {t('open-0')} config.json
           </ConfigJsonButton>
         </div>
         <form onSubmit={formMethods.handleSubmit(onSubmit)}>
           {config ? (
             <div className="p-2">
               <h3 className="flex gap-1">
-                System Message
+                {t('system-message')}
                 <InfoHover
-                  msg={`Set a system message with information that the LLM should always
-              keep in mind (e.g. "Please give concise answers. Always respond in
-              Spanish.")`}
+                  msg={`t('set-a-system-message-with-information-that-the-llm-should-always-keep-in-mind-e-g-please-give-concise-answers-always-respond-in-spanish')`}
                 />
               </h3>
               <TextArea
-                placeholder="Enter a system message (e.g. 'Always respond in German')"
+                placeholder={t('enter-a-system-message-e-g-always-respond-in-german')}
                 {...formMethods.register("systemMessage")}
               />
 
               <Hr />
               <h3 className="flex gap-1">
-                Temperature
+                {t('temperature')}
                 <InfoHover
-                  msg={`Set temperature to any value between 0 and 1. Higher values will
-            make the LLM more creative, while lower values will make it more
-            predictable.`}
+                  msg={`t('set-temperature-to-any-value-between-0-and-1-higher-values-will-make-the-llm-more-creative-while-lower-values-will-make-it-more-predictable')`}
                 />
               </h3>
               <div className="flex justify-between mx-16 gap-1">
@@ -257,9 +253,9 @@ function Settings() {
         <hr />
 
         <div className="px-2">
-          <h3>Appearance</h3>
+          <h3>{t('appearance')}</h3>
 
-          <p>Font Size</p>
+          <p>{t('font-size')}</p>
           <NumberInput
             type="number"
             min="8"
@@ -278,7 +274,7 @@ function Settings() {
               navigate("/");
             }}
           >
-            Cancel
+            {t('cancel')}
           </CancelButton>
           <SaveButton onClick={submitAndLeave}>Save</SaveButton>
         </div>

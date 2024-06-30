@@ -3,12 +3,14 @@ import { useNavigate, useRouteError } from "react-router-dom";
 import { newSession } from "../redux/slices/stateSlice";
 import ContinueButton from "../components/mainInput/ContinueButton";
 import { vscBackground } from "../components";
+import { useTranslation } from 'react-i18next';
 
 export default function ErrorPage() {
   const error: any = useRouteError();
   console.error(error);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   return (
     <div
@@ -16,12 +18,12 @@ export default function ErrorPage() {
       className="text-center"
       style={{ backgroundColor: vscBackground }}
     >
-      <h1>Error in Continue React App</h1>
+      <h1>{t('error-in-continue-react-app')}</h1>
       <p>
         <i>{error.statusText || error.message}</i>
       </p>
       <br />
-      <p>Click below to Continue</p>
+      <p>{t('click-below-to-continue')}</p>
       <br />
       <ContinueButton
         disabled={false}

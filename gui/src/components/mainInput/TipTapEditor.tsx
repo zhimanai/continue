@@ -239,7 +239,7 @@ function TipTapEditor(props: TipTapEditorProps) {
     } else {
       ideMessenger.post("errorPopup", {
         message:
-          "Images need to be in jpg or png format and less than 10MB in size.",
+          t('images-need-to-be-in-jpg-or-png-format-and-less-than-10mb-in-size'),
       });
     }
     return undefined;
@@ -259,8 +259,8 @@ function TipTapEditor(props: TipTapEditorProps) {
       Placeholder.configure({
         placeholder: () =>
           historyLengthRef.current === 0
-            ? "Ask anything, '/' for slash commands, '@' to add context"
-            : "Ask a follow-up",
+            ? t('ask-anything-for-slash-commands-to-add-context')
+            : t('ask-a-follow-up'),
       }),
       Paragraph.extend({
         addKeyboardShortcuts() {
@@ -769,7 +769,7 @@ function TipTapEditor(props: TipTapEditorProps) {
         ) && (
           <>
             <HoverDiv></HoverDiv>
-            <HoverTextDiv>Hold ⇧ to drop image</HoverTextDiv>
+            <HoverTextDiv>{t('hold-to-drop-image')}</HoverTextDiv>
           </>
         )}
     </InputBoxDiv>

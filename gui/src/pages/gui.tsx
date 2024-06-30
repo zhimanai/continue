@@ -134,11 +134,11 @@ function fallbackRender({ error, resetErrorBoundary }) {
       className="px-2"
       style={{ backgroundColor: vscBackground }}
     >
-      <p>Something went wrong:</p>
+      <p>{t('something-went-wrong')}</p>
       <pre style={{ color: "red" }}>{error.message}</pre>
 
       <div className="text-center">
-        <Button onClick={resetErrorBoundary}>Restart</Button>
+        <Button onClick={resetErrorBoundary}>{t('restart')}</Button>
       </div>
     </div>
   );
@@ -268,10 +268,7 @@ function GUI(props: GUIProps) {
           dispatch(
             setDialogMessage(
               <div className="text-center p-4">
-                👋 Thanks for using Continue. We are always trying to improve
-                and love hearing from users. If you're interested in speaking,
-                enter your name and email. We won't use this information for
-                anything other than reaching out.
+                👋 {t('thanks-for-using-continue-we-are-always-trying-to-improve-and-love-hearing-from-users-if-youre-interested-in-speaking-enter-your-name-and-email-we-wont-use-this-information-for-anything-other-than-reaching-out')}
                 <br />
                 <br />
                 <form
@@ -284,7 +281,7 @@ function GUI(props: GUIProps) {
                     dispatch(
                       setDialogMessage(
                         <div className="text-center p-4">
-                          Thanks! We'll be in touch soon.
+                          {t('thanks-well-be-in-touch-soon')}
                         </div>,
                       ),
                     );
@@ -299,14 +296,14 @@ function GUI(props: GUIProps) {
                     style={{ padding: "10px", borderRadius: "5px" }}
                     type="text"
                     name="name"
-                    placeholder="Name"
+                    placeholder={t('name')}
                     required
                   />
                   <input
                     style={{ padding: "10px", borderRadius: "5px" }}
                     type="email"
                     name="email"
-                    placeholder="Email"
+                    placeholder={t('email')}
                     required
                   />
                   <button
@@ -317,7 +314,7 @@ function GUI(props: GUIProps) {
                     }}
                     type="submit"
                   >
-                    Submit
+                    {t('submit')}
                   </button>
                 </form>
               </div>,
@@ -450,7 +447,7 @@ function GUI(props: GUIProps) {
                                 messageType: "userInput",
                                 data: {
                                   input:
-                                    "Continue your response exactly where you left off:",
+                                    t('continue-your-response-exactly-where-you-left-off'),
                                 },
                               },
                               "*",
@@ -497,7 +494,7 @@ function GUI(props: GUIProps) {
               className="mr-auto flex items-center gap-1"
             >
               <ArrowLeftIcon width="11px" height="11px" />
-              Last Session
+              {t('last-session')}
             </NewSessionButton>
           ) : null}
         </div>
@@ -515,7 +512,7 @@ function GUI(props: GUIProps) {
             }
           }}
         >
-          {getMetaKeyLabel()} ⌫ Cancel
+          {getMetaKeyLabel()} ⌫ {t('cancel')}
         </StopButton>
       )}
     </>

@@ -55,7 +55,7 @@ function ContinueButton(props: {
       {props.showStop ? (
         <>
           <StopIcon width="18px" height="18px" />
-          STOP
+          {t('stop')}
         </>
       ) : (
         <>
@@ -64,7 +64,7 @@ function ContinueButton(props: {
           ) : (
             <PlayIcon width="18px" height="18px" />
           )}
-          CONTINUE
+          {t('continue')}
         </>
       )}
     </StyledButton>

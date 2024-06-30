@@ -175,7 +175,7 @@ const MentionList = forwardRef((props: MentionListProps, ref) => {
     const items = [...props.items];
     if (subMenuTitle === "Type to search docs") {
       items.push({
-        title: "Add Docs",
+        title: t('add-docs'),
         type: "action",
         action: () => {
           dispatch(setShowDialog(true));
@@ -189,7 +189,7 @@ const MentionList = forwardRef((props: MentionListProps, ref) => {
             tr.delete(start, tr.selection.from).scrollIntoView(),
           );
         },
-        description: "Add a new documentation source",
+        description: t('add-a-new-documentation-source'),
       });
     }
     setAllItems(items);

@@ -23,10 +23,9 @@ function SetupLocalOrKeyDialog() {
 
   return (
     <div className="p-4">
-      <h3>Set up your own model</h3>
+      <h3>{t('set-up-your-own-model')}</h3>
       <p>
-        To keep using Continue after your free inputs, you can either use your
-        own API key, or use a local LLM. To read more about the options, see our{" "}
+        {t('to-keep-using-continue-after-your-free-inputs-you-can-either-use-your-own-api-key-or-use-a-local-llm-to-read-more-about-the-options-see-our')}{" "}
         <a
           className="cursor-pointer"
           onClick={() =>
@@ -36,14 +35,14 @@ function SetupLocalOrKeyDialog() {
             )
           }
         >
-          documentation
+          {t('documentation')}
         </a>
         .
       </p>
 
       <Input
         type="text"
-        placeholder="Enter your OpenAI API key"
+        placeholder={t('enter-your-openai-api-key')}
         value={apiKey}
         onChange={(e) => setApiKey(e.target.value)}
       />
@@ -56,7 +55,7 @@ function SetupLocalOrKeyDialog() {
           dispatch(setDefaultModel({ title: "GPT-4" }));
         }}
       >
-        Use my OpenAI API key
+        {t('use-my-openai-api-key')}
       </Button>
       <div className="text-center">— OR —</div>
       <GridDiv>
@@ -69,7 +68,7 @@ function SetupLocalOrKeyDialog() {
             navigate("/localOnboarding");
           }}
         >
-          Use local model
+          {t('use-local-model')}
         </Button>
         <Button
           onClick={() => {
@@ -77,7 +76,7 @@ function SetupLocalOrKeyDialog() {
             navigate("/models");
           }}
         >
-          View all options
+          {t('view-all-options')}
         </Button>
       </GridDiv>
     </div>

@@ -206,9 +206,7 @@ function ModelCard(props: ModelCardProps) {
             <div className="flex items-center flex-wrap justify-end rtl">
               <div className="flex items-center">
                 <InfoHover
-                  msg={
-                    "Select the provider through which you will access the model"
-                  }
+                  msg={t('select-the-provider-through-which-you-will-access-the-model')}
                 />
               </div>
               <div className="flex items-center flex-wrap justify-end rtl">

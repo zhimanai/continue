@@ -17,7 +17,7 @@ export function CopyButton(props: CopyButtonProps) {
   return (
     <>
       <HeaderButtonWithText
-        text={copied ? "Copied!" : "Copy"}
+        text={copied ? t('copied') : t('copy')}
         onClick={(e) => {
           const text =
             typeof props.text === "string" ? props.text : props.text();

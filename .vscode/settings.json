@@ -12,5 +12,8 @@
         "path": "bash",
         "args": ["-l"]
       }
-    }
+    },
+    "i18n-ally.localesPaths": [
+      "gui/src/i18n"
+    ]
 }

@@ -140,7 +140,7 @@ export function getMentionSuggestion(
       mainResults.length === availableContextProvidersRef.current.length
     ) {
       mainResults.push({
-        title: "Add more context providers",
+        title: t('add-more-context-providers'),
         type: "action",
         action: () => {
           ideMessenger.request(

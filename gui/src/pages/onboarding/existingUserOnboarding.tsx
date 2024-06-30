@@ -32,10 +32,9 @@ function ExistingUserOnboarding() {
   return (
     <TopDiv>
       <div className="m-auto p-2 max-w-96 mt-16 overflow-y-scroll">
-        <h1 className="text-center">Use Improved Models?</h1>
+        <h1 className="text-center">{t('use-improved-models')}</h1>
         <p className="text-center pb-2">
-          Continue now integrates with higher quality cloud models for
-          autocomplete and codebase retrieval.
+          {t('continue-now-integrates-with-higher-quality-cloud-models-for-autocomplete-and-codebase-retrieval')}
         </p>
         <Div
           color={greenButtonColor}
@@ -48,10 +47,9 @@ function ExistingUserOnboarding() {
           onMouseEnter={() => setHovered1(true)}
           onMouseLeave={() => setHovered1(false)}
         >
-          <h3>🔒 Keep existing setup</h3>
+          <h3>🔒 {t('keep-existing-setup')}</h3>
           <p>
-            Continue using fully local autocomplete + embeddings, or whichever
-            options you have configured.
+            {t('continue-using-fully-local-autocomplete-embeddings-or-whichever-options-you-have-configured')}
           </p>
         </Div>
         <br></br>
@@ -66,11 +64,9 @@ function ExistingUserOnboarding() {
           onMouseEnter={() => setHovered2(true)}
           onMouseLeave={() => setHovered2(false)}
         >
-          <h3>✨ Use cloud models</h3>
+          <h3>✨ {t('use-cloud-models')}</h3>
           <p>
-            Continue's autocomplete and codebase retrieval will feel
-            significantly improved. API calls are made to Fireworks/Voyage, but
-            code is only ever stored locally.
+            {t('continues-autocomplete-and-codebase-retrieval-will-feel-significantly-improved-api-calls-are-made-to-fireworks-voyage-but-code-is-only-ever-stored-locally')}
           </p>
         </Div>
         {selected === 1 && (
@@ -139,7 +135,7 @@ Alternatively, you can enter your own API keys:
               navigate("/");
             }}
           >
-            Continue
+            {t('continue-0')}
           </StyledButton>
         </div>
       </div>

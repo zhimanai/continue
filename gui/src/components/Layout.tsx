@@ -221,7 +221,7 @@ const Layout = () => {
   }, [location]);
 
   const [indexingState, setIndexingState] = useState<IndexingProgressUpdate>({
-    desc: "Indexing disabled",
+    desc: t('indexing-disabled'),
     progress: 0.0,
     status: "disabled",
   });
@@ -264,7 +264,7 @@ const Layout = () => {
                 <IndexingProgressBar indexingState={indexingState} />
               </div>
               <HeaderButtonWithText
-                text="Help"
+                text={t('help')}
                 onClick={() => {
                   if (location.pathname === "/help") {
                     navigate("/");
@@ -280,7 +280,7 @@ const Layout = () => {
                   // navigate("/settings");
                   ideMessenger.post("openConfigJson", undefined);
                 }}
-                text="Configure Continue"
+                text={t('configure-continue')}
               >
                 <Cog6ToothIcon width="1.4em" height="1.4em" />
               </HeaderButtonWithText>
