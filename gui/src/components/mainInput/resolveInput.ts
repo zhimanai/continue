@@ -86,7 +86,7 @@ async function resolveEditorContent(
         },
       });
     } else {
-      console.warn("Unexpected content type", p.type);
+      console.warn(t('unexpected-content-type'), p.type);
     }
   }
 
@@ -192,7 +192,7 @@ function resolveParagraph(p: JSONContent): [string, MentionAttrs[], string] {
         text += child.attrs.label;
       }
     } else {
-      console.warn("Unexpected child type", child.type);
+      console.warn(t('unexpected-child-type'), child.type);
     }
   }
   return [text, contextItems, slashCommand];

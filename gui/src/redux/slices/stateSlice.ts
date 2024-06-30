@@ -102,25 +102,25 @@ const initialState: State = {
     slashCommands: [
       {
         name: "edit",
-        description: "Edit selected code",
+        description: t('edit-selected-code'),
       },
       {
         name: "comment",
-        description: "Write comments for the selected code",
+        description: t('write-comments-for-the-selected-code'),
       },
       {
         name: "share",
-        description: "Export the current chat session to markdown",
+        description: t('export-the-current-chat-session-to-markdown'),
       },
       {
         name: "cmd",
-        description: "Generate a shell command",
+        description: t('generate-a-shell-command'),
       },
     ],
     contextProviders: [],
     models: [],
   },
-  title: "New Session",
+  title: t('new-session'),
   sessionId: v4(),
   defaultModelTitle: "GPT-4",
 };
@@ -319,7 +319,7 @@ export const stateSlice = createSlice({
         state.history = [];
         state.contextItems = [];
         state.active = false;
-        state.title = "New Session";
+        state.title = t('new-session');
         state.sessionId = v4();
       }
     },

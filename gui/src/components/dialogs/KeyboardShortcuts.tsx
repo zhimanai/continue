@@ -92,62 +92,62 @@ const vscodeShortcuts: KeyboardShortcutProps[] = [
   {
     mac: "⌘ L",
     windows: "⌃ L",
-    description: "Select Code + New Session",
+    description: t('select-code-new-session'),
   },
   {
     mac: "⌘ I",
     windows: "⌃ I",
-    description: "Edit highlighted code",
+    description: t('edit-highlighted-code'),
   },
   {
     mac: "⌘ ⇧ L",
     windows: "⌃ ⇧ L",
-    description: "Select Code",
+    description: t('select-code'),
   },
   {
     mac: "⌘ ⇧ ⏎",
     windows: "⌃ ⇧ ⏎",
-    description: "Accept Diff",
+    description: t('accept-diff'),
   },
   {
     mac: "⌘ ⇧ ⌫",
     windows: "⌃ ⇧ ⌫",
-    description: "Reject Diff",
+    description: t('reject-diff'),
   },
   {
     mac: "⌥ ⌘ Y",
     windows: "Alt ⌃ Y",
-    description: "Accept Top Change in Diff",
+    description: t('accept-top-change-in-diff'),
   },
   {
     mac: "⌥ ⌘ N",
     windows: "Alt ⌃ N",
-    description: "Reject Top Change in Diff",
+    description: t('reject-top-change-in-diff'),
   },
   {
     mac: "⌥ ⌘ L",
     windows: "Alt ⌃ L",
-    description: "Toggle Continue Sidebar",
+    description: t('toggle-continue-sidebar'),
   },
   {
     mac: "⌘ ⇧ R",
     windows: "⌃ ⇧ R",
-    description: "Debug Terminal",
+    description: t('debug-terminal'),
   },
   {
     mac: "⌘ ⌫",
     windows: "⌃ ⌫",
-    description: "Cancel response",
+    description: t('cancel-response'),
   },
   {
     mac: "⌘ K ⌘ M",
     windows: "⌃ K ⌃ M",
-    description: "Toggle Full Screen",
+    description: t('toggle-full-screen'),
   },
   {
     mac: "⌘ '",
     windows: "⌃ '",
-    description: "Toggle Selected Model",
+    description: t('toggle-selected-model'),
   },
 ];
 
@@ -155,52 +155,52 @@ const jetbrainsShortcuts: KeyboardShortcutProps[] = [
   {
     mac: "⌘ J",
     windows: "⌃ J",
-    description: "Select Code + New Session",
+    description: t('select-code-new-session'),
   },
   {
     mac: "⌘ ⇧ J",
     windows: "⌃ ⇧ J",
-    description: "Select Code",
+    description: t('select-code'),
   },
   {
     mac: "⌘ I",
     windows: "⌃ I",
-    description: "Edit highlighted code",
+    description: t('edit-highlighted-code'),
   },
   {
     mac: "⌘ ⇧ I",
     windows: "⌃ ⇧ I",
-    description: "Toggle inline edit focus",
+    description: t('toggle-inline-edit-focus'),
   },
   {
     mac: "⌘ ⇧ ⏎",
     windows: "⌃ ⇧ ⏎",
-    description: "Accept Diff",
+    description: t('accept-diff'),
   },
   {
     mac: "⌘ ⇧ ⌫",
     windows: "⌃ ⇧ ⌫",
-    description: "Reject Diff",
+    description: t('reject-diff'),
   },
   {
     mac: "⌥ ⇧ J",
     windows: "Alt ⇧ J",
-    description: "Quick Input",
+    description: t('quick-input'),
   },
   {
     mac: "⌥ ⌘ J",
     windows: "Alt ⌃ J",
-    description: "Toggle Sidebar",
+    description: t('toggle-sidebar'),
   },
   {
     mac: "⌘ ⌫",
     windows: "⌃ ⌫",
-    description: "Cancel response",
+    description: t('cancel-response'),
   },
   {
     mac: "⌘ '",
     windows: "⌃ '",
-    description: "Toggle Selected Model",
+    description: t('toggle-selected-model'),
   },
 ];
 

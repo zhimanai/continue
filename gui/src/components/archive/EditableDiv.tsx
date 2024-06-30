@@ -78,7 +78,7 @@ function EditableDiv(props: EditableDivProps) {
         // }
       }}
     >
-      {props.value ? props.value : <Span contentEditable={false}>testing</Span>}
+      {props.value ? props.value : <Span contentEditable={false}>{t('testing')}</Span>}
     </Div>
   );
 }

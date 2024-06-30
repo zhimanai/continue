@@ -271,15 +271,14 @@ function History() {
 
       <div>
         <SearchBar
-          placeholder="Search past sessions"
+          placeholder={t('search-past-sessions')}
           type="text"
           onChange={(e) => setSearchTerm(e.target.value)}
         />
 
         {filteredAndSortedSessions.length === 0 && (
           <div className="text-center m-4">
-            No past sessions found. To start a new session, either click the "+"
-            button or use the keyboard shortcut: <b>Option + Command + N</b>
+            {t('no-past-sessions-found-to-start-a-new-session-either-click-the-button-or-use-the-keyboard-shortcut')} <b>Option + Command + N</b>
           </div>
         )}
 
@@ -295,21 +294,21 @@ function History() {
                 <Fragment key={index}>
                   {index === 0 && date > yesterday && (
                     <SectionHeader style={{ top: `${headerHeight - 1}px` }}>
-                      Today
+                      {t('today')}
                     </SectionHeader>
                   )}
                   {date < yesterday &&
                     date > lastWeek &&
                     prevDate > yesterday && (
                       <SectionHeader style={{ top: `${headerHeight - 1}px` }}>
-                        This Week
+                        {t('this-week')}
                       </SectionHeader>
                     )}
                   {date < lastWeek &&
                     date > lastMonth &&
                     prevDate > lastWeek && (
                       <SectionHeader style={{ top: `${headerHeight - 1}px` }}>
-                        This Month
+                        {t('this-month')}
                       </SectionHeader>
                     )}
 
@@ -327,7 +326,8 @@ function History() {
         </table>
         <br />
         <i className="text-sm ml-4">
-          All session data is saved in ~/.continue/sessions
+          {t('all-session-data-is-saved-in')} ~/.continue/sessions
+          {/* 路径修改 */}
         </i>
       </div>
     </div>

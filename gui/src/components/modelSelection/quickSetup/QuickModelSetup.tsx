@@ -34,15 +34,13 @@ function QuickModelSetup(props: QuickModelSetupProps) {
       <div className="p-4">
         <h1>
           {getLocalStorage("ftc") > ftl()
-            ? "Set up your own model"
-            : "Add a new model"}
+            ? t('set-up-your-own-model')
+            : t('add-a-new-model')}
         </h1>
 
         {getLocalStorage("ftc") > ftl() && (
           <p className="text-sm text-gray-500">
-            You've reached the free trial limit of {ftl()} free inputs. To keep
-            using Continue, you can either use your own API key, or use a local
-            LLM. To read more about the options, see our{" "}
+            {t('youve-reached-the-free-trial-limit-of-ftl-free-inputs-to-keep-using-continue-you-can-either-use-your-own-api-key-or-use-a-local-llm-to-read-more-about-the-options-see-our', ftl())}{" "}
             <a
               href="https://docs.continue.dev/setup/overview"
               target="_blank"
@@ -53,13 +51,13 @@ function QuickModelSetup(props: QuickModelSetupProps) {
                 )
               }
             >
-              documentation
+              {t('documentation')}
             </a>
             .
           </p>
         )}
 
-        <h4>1. Select a provider</h4>
+        <h4>1. {t('select-a-provider')}</h4>
         <QuickSetupListBox
           selectedProvider={selectedProvider}
           setSelectedProvider={setSelectedProvider}
@@ -68,7 +66,7 @@ function QuickModelSetup(props: QuickModelSetupProps) {
             .map(([, provider]) => provider)}
         ></QuickSetupListBox>
 
-        <h4>2. Select a model</h4>
+        <h4>2. {t('select-a-model')}</h4>
         <QuickSetupListBox
           selectedProvider={selectedModel}
           setSelectedProvider={setSelectedModel}
@@ -81,19 +79,19 @@ function QuickModelSetup(props: QuickModelSetupProps) {
 
         {selectedProvider.apiKeyUrl && (
           <>
-            <h4>3. Paste your API key</h4>
+            <h4>3. {t('paste-your-api-key')}</h4>
             <SecondaryButton
               className="w-full border-2 border-solid"
               onClick={() => {
                 ideMessenger.post("openUrl", selectedProvider.apiKeyUrl);
               }}
             >
-              Get API Key
+              {t('get-api-key')}
             </SecondaryButton>
             <Input
               id="apiKey"
               className="w-full"
-              placeholder="Enter API Key"
+              placeholder={t('enter-api-key')}
               {...formMethods.register("apiKey", { required: true })}
             />
           </>
@@ -107,7 +105,7 @@ function QuickModelSetup(props: QuickModelSetupProps) {
                 ideMessenger.post("openUrl", selectedProvider.downloadUrl);
               }}
             >
-              Download {selectedProvider.title}
+              {t('download')} {selectedProvider.title}
             </SecondaryButton>
           </>
         )}
@@ -131,7 +129,7 @@ function QuickModelSetup(props: QuickModelSetupProps) {
             }}
             className="w-full"
           >
-            Add Model
+            {t('add-model')}
           </Button>
           <Button
             onClick={() => {
@@ -140,7 +138,7 @@ function QuickModelSetup(props: QuickModelSetupProps) {
             }}
             className="w-full"
           >
-            Done
+            {t('done')}
           </Button>
         </div>
       </div>

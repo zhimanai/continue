@@ -94,7 +94,7 @@ function InputToolbar(props: InputToolbarProps) {
           }}
           className="hover:underline cursor-pointer"
         >
-          + Add Context
+          + {t('add-context')}
         </span>
         {defaultModel &&
           modelSupportsImages(
@@ -168,7 +168,7 @@ function InputToolbar(props: InputToolbarProps) {
           }}
           className={"hover:underline cursor-pointer float-right"}
         >
-          {getMetaKeyLabel()} ⏎ Use codebase
+          {getMetaKeyLabel()} ⏎ {t('use-codebase')}
         </span>
       )}
       <EnterButton
@@ -185,7 +185,7 @@ function InputToolbar(props: InputToolbarProps) {
           });
         }}
       >
-        ⏎ Enter
+        ⏎ {t('enter')}
       </EnterButton>
     </StyledDiv>
   );

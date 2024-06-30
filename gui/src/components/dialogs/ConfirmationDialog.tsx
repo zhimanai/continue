@@ -24,7 +24,7 @@ function ConfirmationDialog(props: ConfirmationDialogProps) {
 
   return (
     <div className="p-4">
-      <h3>Confirmation</h3>
+      <h3>{t('confirmation')}</h3>
       <p>{props.text}</p>
 
       <GridDiv>
@@ -35,7 +35,7 @@ function ConfirmationDialog(props: ConfirmationDialogProps) {
             dispatch(setDialogMessage(undefined));
           }}
         >
-          Cancel
+          {t('cancel')}
         </Button>
         <Button
           onClick={() => {
@@ -44,7 +44,7 @@ function ConfirmationDialog(props: ConfirmationDialogProps) {
             dispatch(setDialogMessage(undefined));
           }}
         >
-          Confirm
+          {t('confirm')}
         </Button>
       </GridDiv>
     </div>

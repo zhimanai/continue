@@ -20,6 +20,7 @@ import LocalOnboarding from "./pages/localOnboarding";
 import ExistingUserOnboarding from "./pages/onboarding/existingUserOnboarding";
 import Onboarding from "./pages/onboarding/onboarding";
 import Stats from "./pages/stats";
+import './config';
 
 const router = createMemoryRouter([
   {

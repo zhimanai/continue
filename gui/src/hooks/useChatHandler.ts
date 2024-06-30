@@ -179,10 +179,10 @@ function useChatHandler(dispatch: Dispatch, ideMessenger: IIdeMessenger) {
               .join("\n");
           }
           contextItems.unshift({
-            content: `The following file is currently open. Don't reference it if it's not relevant to the user's message.\n\n\`\`\`${getBasename(
+            content: `${t('the-following-file-is-currently-open-dont-reference-it-if-its-not-relevant-to-the-users-message')}\n\n\`\`\`${getBasename(
               currentFilePath,
             )}\n${currentFileContents}\n\`\`\``,
-            name: `Active file: ${getBasename(currentFilePath)}`,
+            name: `${t('active-file')} ${getBasename(currentFilePath)}`,
             description: currentFilePath,
             id: {
               itemId: currentFilePath,
@@ -248,7 +248,7 @@ function useChatHandler(dispatch: Dispatch, ideMessenger: IIdeMessenger) {
     } catch (e) {
       console.log("Continue: error streaming response: ", e);
       ideMessenger.post("errorPopup", {
-        message: `Error streaming response: ${e.message}`,
+        message: `${t('error-streaming-response')} ${e.message}`,
       });
     } finally {
       dispatch(setInactive());

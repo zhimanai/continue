@@ -53,7 +53,7 @@ function ModelSettings(props: { llm: any | undefined; role: string }) {
                 <Input
                   type="text"
                   defaultValue={props.llm.apiKey}
-                  placeholder="API Key"
+                  placeholder={t('api-key')}
                   {...register(`models.${props.role}.apiKey`)}
                 />
               </>
@@ -64,7 +64,7 @@ function ModelSettings(props: { llm: any | undefined; role: string }) {
                 <Input
                   type="text"
                   defaultValue={props.llm.model}
-                  placeholder="Model"
+                  placeholder={t('model')}
                   {...register(`models.${props.role}.model`)}
                 />
               </>
@@ -73,7 +73,7 @@ function ModelSettings(props: { llm: any | undefined; role: string }) {
         </>
       ) : (
         <div>
-          <b>Add Model</b>
+          <b>{t('add-model')}</b>
           <div className="my-4">
             <Select
               defaultValue=""
@@ -84,11 +84,11 @@ function ModelSettings(props: { llm: any | undefined; role: string }) {
               }}
             >
               <option disabled value="">
-                Select Model Type
+                {t('select-model-type')}
               </option>
-              <option value="newModel1">New Model 1</option>
-              <option value="newModel2">New Model 2</option>
-              <option value="newModel3">New Model 3</option>
+              <option value="newModel1">{t('new-model')} 1</option>
+              <option value="newModel2">{t('new-model')} 2</option>
+              <option value="newModel3">{t('new-model')} 3</option>
             </Select>
           </div>
         </div>

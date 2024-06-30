@@ -156,7 +156,7 @@ function ListBoxOption({
               dispatch(
                 setDialogMessage(
                   <ConfirmationDialog
-                    text={`Are you sure you want to delete this model? (${option.title})`}
+                    text={`${t('are-you-sure-you-want-to-delete-this-model')} (${option.title})`}
                     onConfirm={() => {
                       ideMessenger.post("config/deleteModel", {
                         title: option.title,

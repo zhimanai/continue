@@ -53,7 +53,7 @@ function Models() {
           onClick={() => navigate("/")}
           className="inline-block ml-4 cursor-pointer"
         />
-        <h3 className="text-lg font-bold m-2 inline-block">Add new model</h3>
+        <h3 className="text-lg font-bold m-2 inline-block">{t('add-new-model')}</h3>
       </div>
       <br />
       <Toggle
@@ -65,17 +65,15 @@ function Models() {
         }}
       ></Toggle>
       <IntroDiv>
-        To set up an LLM you will choose
+        {t('to-set-up-an-llm-you-will-choose')}
         <ul>
           <li>
-            a provider (the service used to run the LLM, e.g. Ollama,
-            TogetherAI) and
+            {t('a-provider-the-service-used-to-run-the-llm-e-g-ollama-togetherai-and')}
           </li>
-          <li>a model (the LLM being run, e.g. GPT-4, CodeLlama).</li>
+          <li>{t('a-model-the-llm-being-run-e-g-gpt-4-codellama')}</li>
         </ul>
-        To read more about the options, check out our{" "}
-        <a href="https://docs.continue.dev/model-setup/overview">overview</a> in
-        the docs.
+        {t('to-read-more-about-the-options-check-out-our')}{" "}
+        <a href="https://docs.continue.dev/model-setup/overview">{t('overview')}</a> {t('in-the-docs')}
       </IntroDiv>
       {providersSelected ? (
         <GridDiv>
@@ -152,7 +150,7 @@ function Models() {
       <div style={{ padding: "8px" }}>
         <hr style={{ color: lightGray, border: `1px solid ${lightGray}` }} />
         <p style={{ color: lightGray }}>
-          OR choose from other providers / models by editing config.json.
+          {t('or-choose-from-other-providers-models-by-editing-config-json')}
         </p>
         <CustomModelButton
           disabled={false}
@@ -160,7 +158,7 @@ function Models() {
             ideMessenger.post("openConfigJson", undefined);
           }}
         >
-          <h3 className="text-center my-2">Open config.json</h3>
+          <h3 className="text-center my-2">{t('open')} config.json</h3>
         </CustomModelButton>
       </div>
     </div>

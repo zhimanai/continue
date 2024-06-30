@@ -169,9 +169,9 @@ export interface ModelPackage extends DisplayInfo {
 }
 
 const codeLlamaInstruct: ModelPackage = {
-  title: "CodeLlama Instruct",
+  title: t('codellama-instruct'),
   description:
-    "A model from Meta, fine-tuned for code generation and conversation",
+    t('a-model-from-meta-fine-tuned-for-code-generation-and-conversation'),
   refUrl: "",
   params: {
     title: "CodeLlama-7b",
@@ -182,7 +182,7 @@ const codeLlamaInstruct: ModelPackage = {
   dimensions: [
     {
       name: "Parameter Count",
-      description: "The number of parameters in the model",
+      description: t('the-number-of-parameters-in-the-model'),
       options: {
         "7b": {
           model: "codellama-7b",
@@ -209,7 +209,7 @@ const codeLlamaInstruct: ModelPackage = {
 const codellama70bTrial: ModelPackage = {
   title: "Codellama 70b (Free Trial)",
   description:
-    "The best code model from Meta, fine-tuned for code generation and conversation",
+    t('the-best-code-model-from-meta-fine-tuned-for-code-generation-and-conversation'),
   refUrl: "",
   params: {
     title: "CodeLlama-70b",
@@ -223,7 +223,7 @@ const codellama70bTrial: ModelPackage = {
 const mixtralTrial: ModelPackage = {
   title: "Mixtral (Free Trial)",
   description:
-    "Mixtral 8x7b is a mixture of experts model created by Mistral AI",
+    t('mixtral-8x7b-is-a-mixture-of-experts-model-created-by-mistral-ai'),
   refUrl: "",
   params: {
     title: "Mixtral",
@@ -236,7 +236,7 @@ const mixtralTrial: ModelPackage = {
 
 const llama38bChat: ModelPackage = {
   title: "Llama3 8b",
-  description: "The latest Llama model from Meta, fine-tuned for chat",
+  description: t('the-latest-llama-model-from-meta-fine-tuned-for-chat'),
   refUrl: "",
   params: {
     title: "Llama3-8b",
@@ -249,7 +249,7 @@ const llama38bChat: ModelPackage = {
 
 const llama370bChat: ModelPackage = {
   title: "Llama3 70b Chat",
-  description: "The latest Llama model from Meta, fine-tuned for chat",
+  description: t('the-latest-llama-model-from-meta-fine-tuned-for-chat'),
   refUrl: "",
   params: {
     title: "Llama3-70b",
@@ -262,7 +262,7 @@ const llama370bChat: ModelPackage = {
 
 const llama270bChat: ModelPackage = {
   title: "Llama2 70b Chat",
-  description: "The latest Llama model from Meta, fine-tuned for chat",
+  description: t('the-latest-llama-model-from-meta-fine-tuned-for-chat'),
   refUrl: "",
   params: {
     title: "Llama2-70b",
@@ -275,7 +275,7 @@ const llama270bChat: ModelPackage = {
 
 const llama3Chat: ModelPackage = {
   title: "Llama3 Chat",
-  description: "The latest model from Meta, fine-tuned for chat",
+  description: t('the-latest-model-from-meta-fine-tuned-for-chat'),
   refUrl: "",
   params: {
     title: "Llama3-8b",
@@ -286,7 +286,7 @@ const llama3Chat: ModelPackage = {
   dimensions: [
     {
       name: "Parameter Count",
-      description: "The number of parameters in the model",
+      description: t('the-number-of-parameters-in-the-model'),
       options: {
         "8b": {
           model: "llama3-8b",
@@ -305,7 +305,7 @@ const llama3Chat: ModelPackage = {
 const wizardCoder: ModelPackage = {
   title: "WizardCoder",
   description:
-    "A CodeLlama-based code generation model from WizardLM, focused on Python",
+    t('a-codellama-based-code-generation-model-from-wizardlm-focused-on-python'),
   refUrl: "",
   params: {
     title: "WizardCoder-7b",
@@ -316,7 +316,7 @@ const wizardCoder: ModelPackage = {
   dimensions: [
     {
       name: "Parameter Count",
-      description: "The number of parameters in the model",
+      description: t('the-number-of-parameters-in-the-model'),
       options: {
         "7b": {
           model: "wizardcoder-7b",
@@ -338,7 +338,7 @@ const wizardCoder: ModelPackage = {
 
 const phindCodeLlama: ModelPackage = {
   title: "Phind CodeLlama (34b)",
-  description: "A finetune of CodeLlama by Phind",
+  description: t('a-finetune-of-codellama-by-phind'),
   icon: "meta.png",
   params: {
     title: "Phind CodeLlama",
@@ -351,7 +351,7 @@ const phindCodeLlama: ModelPackage = {
 const mistral: ModelPackage = {
   title: "Mistral (7b)",
   description:
-    "A 7b parameter base model created by Mistral AI, very competent for code generation and other tasks",
+    t('a-7b-parameter-base-model-created-by-mistral-ai-very-competent-for-code-generation-and-other-tasks'),
   params: {
     title: "Mistral",
     model: "mistral-7b",
@@ -379,7 +379,7 @@ const mistral: ModelPackage = {
 
 const mistralTiny: ModelPackage = {
   title: "Mistral Tiny (7b)",
-  description: "An 7b parameter model created by Mistral AI",
+  description: t('an-7b-parameter-model-created-by-mistral-ai'),
   params: {
     title: "Mistral",
     model: "mistral-tiny",
@@ -398,7 +398,7 @@ const mistralTiny: ModelPackage = {
 const mistralSmall: ModelPackage = {
   title: "Mixtral (8x7b)",
   description:
-    "An 8x7b parameter Mixture of Experts model created by Mistral AI (a.k.a Mistral Small)",
+    t('an-8x7b-parameter-mixture-of-experts-model-created-by-mistral-ai-a-k-a-mistral-small'),
   params: {
     title: "Mixtral",
     model: "mistral-small",
@@ -416,7 +416,7 @@ const mistralSmall: ModelPackage = {
 };
 const mistralMedium: ModelPackage = {
   title: "Mistral Medium",
-  description: "A highly capable model created by Mistral AI",
+  description: t('a-highly-capable-model-created-by-mistral-ai'),
   params: {
     title: "Mistral Medium",
     model: "mistral-medium",
@@ -435,7 +435,7 @@ const mistralMedium: ModelPackage = {
 
 const geminiPro: ModelPackage = {
   title: "Gemini Pro",
-  description: "A highly capable model created by Google DeepMind",
+  description: t('a-highly-capable-model-created-by-google-deepmind'),
   params: {
     title: "Gemini Pro",
     model: "gemini-pro",
@@ -447,7 +447,7 @@ const geminiPro: ModelPackage = {
 };
 const gemini15Pro: ModelPackage = {
   title: "Gemini 1.5 Pro",
-  description: "A newer Gemini model with 1M token context length",
+  description: t('a-newer-gemini-model-with-1m-token-context-length'),
   params: {
     title: "Gemini 1.5 Pro",
     model: "gemini-1.5-pro-latest",
@@ -460,7 +460,7 @@ const gemini15Pro: ModelPackage = {
 const gemini15Flash: ModelPackage = {
   title: "Gemini 1.5 Flash",
   description:
-    "Fast and versatile multimodal model for scaling across diverse tasks",
+    t('fast-and-versatile-multimodal-model-for-scaling-across-diverse-tasks'),
   params: {
     title: "Gemini 1.5 Flash",
     model: "gemini-1.5-flash-latest",

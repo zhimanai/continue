@@ -74,11 +74,11 @@ function Stats() {
           onClick={() => navigate("/")}
           className="inline-block ml-4 cursor-pointer"
         />
-        <h3 className="text-lg font-bold m-2 inline-block">My Usage</h3>
+        <h3 className="text-lg font-bold m-2 inline-block">{t('my-usage')}</h3>
       </div>
 
       <div className="flex gap-2 items-center">
-        <h2 className="ml-2">Tokens per Day</h2>
+        <h2 className="ml-2">{t('tokens-per-day')}</h2>
         <CopyButton
           text={generateTable(
             ([["Day", "Generated Tokens", "Prompt Tokens"]] as any).concat(
@@ -94,9 +94,9 @@ function Stats() {
       <table className="w-full border-collapse">
         <thead>
           <Tr>
-            <Th>Day</Th>
-            <Th>Generated Tokens</Th>
-            <Th>Prompt Tokens</Th>
+            <Th>{t('day')}</Th>
+            <Th>{t('generated-tokens')}</Th>
+            <Th>{t('prompt-tokens')}</Th>
           </Tr>
         </thead>
         <tbody>
@@ -111,7 +111,7 @@ function Stats() {
       </table>
 
       <div className="flex gap-2 items-center">
-        <h2 className="ml-2">Tokens per Model</h2>
+        <h2 className="ml-2">{t('tokens-per-model')}</h2>
         <CopyButton
           text={generateTable(
             ([["Model", "Generated Tokens", "Prompt Tokens"]] as any).concat(
@@ -127,9 +127,9 @@ function Stats() {
       <table className="w-full border-collapse">
         <thead>
           <Tr>
-            <Th>Model</Th>
-            <Th>Generated Tokens</Th>
-            <Th>Prompt Tokens</Th>
+            <Th>{t('model')}</Th>
+            <Th>{t('generated-tokens')}</Th>
+            <Th>{t('prompt-tokens')}</Th>
           </Tr>
         </thead>
         <tbody>

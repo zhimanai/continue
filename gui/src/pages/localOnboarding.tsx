@@ -130,7 +130,7 @@ function RunInTerminalButton(props: { command: string }) {
       {tooltipPortalDiv &&
         ReactDOM.createPortal(
           <StyledTooltip id={id} place="top">
-            Run in terminal
+            {t('run-in-terminal')}
           </StyledTooltip>,
           tooltipPortalDiv,
         )}
@@ -208,37 +208,35 @@ function LocalOnboarding() {
 
   return (
     <div className="p-8 overflow-y-scroll">
-      <h1 className="text-center">Set up your local LLM</h1>
+      <h1 className="text-center">{t('set-up-your-local-llm')}</h1>
       <CheckMarkHeader complete={stage1Done}>
-        1. Download Ollama
+        {t('1-download-ollama')}
       </CheckMarkHeader>
       {ollamaConnectionStatus === "verified" || (
         <>
           <p>
-            Click below to download Ollama from https://ollama.ai. Once
-            downloaded, you only need to start the application.
+            {t('click-below-to-download-ollama-from-https-ollama-ai-once-downloaded-you-only-need-to-start-the-application')}
           </p>
           <div className="text-center">
             <a href="https://ollama.ai">
               <Button onClick={() => setOllamaConnectionStatus("downloading")}>
-                Download Ollama
+                {t('download-ollama-0')}
               </Button>
             </a>
           </div>
         </>
       )}
       {ollamaConnectionStatus === "downloading" && (
-        <p>Checking for connection to Ollama...</p>
+        <p>{t('checking-for-connection-to-ollama')}</p>
       )}
-      {ollamaConnectionStatus === "verified" && <p>Ollama is connected!</p>}
+      {ollamaConnectionStatus === "verified" && <p>{t('ollama-is-connected')}</p>}
       <br></br>
       <CheckMarkHeader complete={stage2Done}>
-        2. Download a model for chat
+        {t('2-download-a-model-for-chat')}
       </CheckMarkHeader>
       {stage1Done && (
         <>
-          We recommend using Llama 3, the latest open-source model trained by
-          Meta.
+          {t('we-recommend-using-llama-3-the-latest-open-source-model-trained-by-meta')}
           <br></br>
           <RunInTerminalButton
             command={`ollama run ${recommendedChatModel}`}
@@ -247,12 +245,11 @@ function LocalOnboarding() {
       )}
       <br></br>
       <CheckMarkHeader complete={stage3Done}>
-        3. Download a model for tab autocomplete
+        {t('3-download-a-model-for-tab-autocomplete')}
       </CheckMarkHeader>
       {stage1Done && (
         <>
-          We recommend using Starcoder 2, a state-of-the-art 3b parameter
-          autocomplete model trained by Hugging Face.
+          {t('we-recommend-using-starcoder-2-a-state-of-the-art-3b-parameter-autocomplete-model-trained-by-hugging-face')}
           <br></br>
           <RunInTerminalButton
             command={`ollama run ${recommendedAutocompleteModel}`}
@@ -291,7 +288,7 @@ function LocalOnboarding() {
             navigate("/");
           }}
         >
-          Continue
+          {t('continue-2')}
         </StyledButton>
       </div>
     </div>

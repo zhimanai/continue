@@ -96,7 +96,7 @@ const IndexingProgressBar = ({ indexingState }: ProgressBarProps) => {
           {tooltipPortalDiv &&
             ReactDOM.createPortal(
               <StyledTooltip id="indexingNotLoaded_dot" place="top">
-                Codebase indexing is starting up.
+                {t('codebase-indexing-is-starting-up')}
               </StyledTooltip>,
               tooltipPortalDiv,
             )}
@@ -110,9 +110,9 @@ const IndexingProgressBar = ({ indexingState }: ProgressBarProps) => {
           {tooltipPortalDiv &&
             ReactDOM.createPortal(
               <StyledTooltip id="indexingFailed_dot" place="top">
-                Error indexing codebase: {indexingState.desc}
+                {t('error-indexing-codebase')} {indexingState.desc}
                 <br />
-                Click to retry
+                {t('click-to-retry')}
               </StyledTooltip>,
               tooltipPortalDiv,
             )}
@@ -123,7 +123,7 @@ const IndexingProgressBar = ({ indexingState }: ProgressBarProps) => {
           {tooltipPortalDiv &&
             ReactDOM.createPortal(
               <StyledTooltip id="progress_dot" place="top">
-                Index up to date. Click to force re-indexing
+                {t('index-up-to-date-click-to-force-re-indexing')}
               </StyledTooltip>,
               tooltipPortalDiv,
             )}
@@ -177,7 +177,7 @@ const IndexingProgressBar = ({ indexingState }: ProgressBarProps) => {
             </ProgressBarWrapper>
             <P>
               {hovered
-                ? "Click to pause"
+                ? t('click-to-pause')
                 : `Indexing (${Math.trunc(indexingState.progress * 100)}%)`}
             </P>
           </GridDiv>
