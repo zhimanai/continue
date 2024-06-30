@@ -200,5 +200,11 @@
   "a-newer-gemini-model-with-1m-token-context-length": "A newer Gemini model with 1M token context length",
   "fast-and-versatile-multimodal-model-for-scaling-across-diverse-tasks": "Fast and versatile multimodal model for scaling across diverse tasks",
   "thanks-well-be-in-touch-soon": "Thanks! We'll be in touch soon.",
-  "continue-your-response-exactly-where-you-left-off": "Continue your response exactly where you left off:"
+  "continue-your-response-exactly-where-you-left-off": "Continue your response exactly where you left off:",
+  "configure-model": "Configure Model",
+  "enter-required-parameters": "Enter required parameters",
+  "advanced-optional": "Advanced (optional)",
+  "select-a-model-preset": "Select a model preset",
+  "open-config-json": "Open config.json",
+  "continue-server-starting": "Continue Server Starting"
 }
