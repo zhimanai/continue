@@ -132,7 +132,7 @@ function StepContainer(props: StepContainerProps) {
           >
             {truncatedEarly && (
               <HeaderButtonWithText
-                text="Continue generation"
+                text={t('continue-generation')}
                 onClick={(e) => {
                   props.onContinueGeneration();
                 }}
@@ -150,7 +150,7 @@ function StepContainer(props: StepContainerProps) {
               color={lightGray}
             />
             <HeaderButtonWithText
-              text="Regenerate"
+              text={t('regenerate')}
               onClick={(e) => {
                 props.onRetry();
               }}
@@ -162,7 +162,7 @@ function StepContainer(props: StepContainerProps) {
               />
             </HeaderButtonWithText>
             {feedback === false || (
-              <HeaderButtonWithText text="Helpful">
+              <HeaderButtonWithText text={t('helpful')}>
                 <HandThumbUpIcon
                   className={
                     "cursor-pointer hover:text-green-500" +
@@ -178,7 +178,7 @@ function StepContainer(props: StepContainerProps) {
               </HeaderButtonWithText>
             )}
             {feedback === true || (
-              <HeaderButtonWithText text="Unhelpful">
+              <HeaderButtonWithText text={t('unhelpful')}>
                 <HandThumbDownIcon
                   className={
                     "cursor-pointer hover:text-red-500" +

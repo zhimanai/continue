@@ -58,8 +58,8 @@ function Models() {
       <br />
       <Toggle
         selected={providersSelected}
-        optionOne={"Providers"}
-        optionTwo={"Models"}
+        optionOne={t('providers')}
+        optionTwo={t('models-0')}
         onClick={() => {
           setProvidersSelected((prev) => !prev);
         }}

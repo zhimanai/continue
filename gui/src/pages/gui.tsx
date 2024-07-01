@@ -484,7 +484,7 @@ function GUI(props: GUIProps) {
               }}
               className="mr-auto"
             >
-              New Session ({getMetaKeyLabel()} {isJetBrains() ? "J" : "L"})
+              {t('new-session')} ({getMetaKeyLabel()} {isJetBrains() ? "J" : "L"})
             </NewSessionButton>
           ) : getLastSessionId() ? (
             <NewSessionButton

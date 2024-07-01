@@ -23,6 +23,7 @@ declare global {
   var t: (string, ...vars) => string;
 }
 
+globalThis.t = i18next.t;
 window.t = i18next.t;
 
 export default i18next;

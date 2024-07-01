@@ -44,10 +44,10 @@ function Onboarding() {
       </Div>
       {selected === 0 && (
         <p className="px-3">
-          <b>Embeddings:</b> Voyage Code 2
+          <b>{t('embeddings')}</b> Voyage Code 2
           <br />
           <br />
-          <b>Autocomplete:</b> Starcoder 7b via Fireworks AI (free trial)
+          <b>{t('autocomplete')}</b> {t('starcoder-7b-via-fireworks-ai-free-trial')}
           <br />
           <br />
           <b>Chat:</b> GPT-4, Claude 3, and others (free trial)
@@ -72,14 +72,13 @@ function Onboarding() {
       </Div>
       {selected === 1 && (
         <p className="px-3">
-          <b>Embeddings:</b> Local sentence-transformers model
+          <b>{t('embeddings')}</b> {t('local-sentence-transformers-model')}
           <br />
           <br />
-          <b>Autocomplete:</b> Starcoder2 3b (set up with Ollama, LM Studio,
-          etc.)
+          <b>{t('autocomplete')}</b> {t('starcoder2-3b-set-up-with-ollama-lm-studio-etc')}
           <br />
           <br />
-          <b>Chat:</b> Llama 3 with Ollama, LM Studio, etc.
+          <b>{t('chat')}</b> {t('llama-3-with-ollama-lm-studio-etc')}
         </p>
       )}
       <br></br>

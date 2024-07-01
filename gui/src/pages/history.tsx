@@ -129,7 +129,7 @@ function TableRow({
         {hovered && (
           <HeaderButtonWithText
             className="mr-2"
-            text="Delete"
+            text={t('delete')}
             onClick={async () => {
               deleteSession(session.sessionId);
               onDelete(session.sessionId);

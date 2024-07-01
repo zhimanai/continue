@@ -521,7 +521,7 @@ const commandR: ModelPackage = {
 const commandRPlus: ModelPackage = {
   title: "Command R+",
   description:
-    "Command R+ is a state-of-the-art RAG-optimized model designed to tackle enterprise-grade workloads",
+    t('command-r-is-a-state-of-the-art-rag-optimized-model-designed-to-tackle-enterprise-grade-workloads'),
   params: {
     model: "command-r-plus",
     contextLength: 128_000,
@@ -690,9 +690,9 @@ export const PROVIDER_INFO: { [key: string]: ModelInfo } = {
   openai: {
     title: "OpenAI",
     provider: "openai",
-    description: "Use gpt-4, gpt-3.5-turbo, or any other OpenAI model",
+    description: t('use-gpt-4-gpt-3-5-turbo-or-any-other-openai-model'),
     longDescription:
-      "Use gpt-4, gpt-3.5-turbo, or any other OpenAI model. See [here](https://openai.com/product#made-for-developers) to obtain an API key.",
+      t('use-gpt-4-gpt-3-5-turbo-or-any-other-openai-model-see-here-https-openai-com-product-made-for-developers-to-obtain-an-api-key'),
     icon: "openai.png",
     tags: [ModelProviderTag["Requires API Key"]],
     packages: [

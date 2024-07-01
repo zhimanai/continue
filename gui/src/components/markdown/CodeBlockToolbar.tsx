@@ -116,7 +116,7 @@ function CodeBlockToolBar(props: CodeBlockToolBarProps) {
           </HeaderButtonWithText>
         )}
         <HeaderButtonWithText
-          text="Insert at cursor"
+          text={t('insert-at-cursor')}
           style={{ backgroundColor: vscEditorBackground }}
           onClick={() => {
             ideMessenger.post("insertAtCursor", { text: props.text });

@@ -11,7 +11,7 @@ import {
 } from "../index.js";
 import { RangeInFileWithContents } from "../commands/util.js";
 
-import { Protocol } from "../protocol.js";
+import { IProtocol } from "../protocol/index.js";
 
 export type IdeProtocol = {
   listWorkspaceContents: [undefined, string[]];
@@ -60,7 +60,7 @@ export type IdeProtocol = {
   getTags: [string, IndexTag[]];
 };
 
-export type WebviewProtocol = Protocol &
+export type WebviewProtocol = IProtocol &
   IdeProtocol & {
     onLoad: [
       undefined,

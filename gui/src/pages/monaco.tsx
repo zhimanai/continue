@@ -53,10 +53,10 @@ function EditorFrame(props: EditorFrameProps) {
           {props.filename.split("/").pop()}
         </code>
         <div className="flex items-center">
-          <HeaderButtonWithText text="Reject" onClick={() => {}}>
+          <HeaderButtonWithText text={t('reject')} onClick={() => {}}>
             <XMarkIcon width="1.3em" height="1.3em" color="red" />
           </HeaderButtonWithText>
-          <HeaderButtonWithText text="Accept" onClick={() => {}}>
+          <HeaderButtonWithText text={t('accept')} onClick={() => {}}>
             <CheckIcon width="1.3em" height="1.3em" color="lightgreen" />
           </HeaderButtonWithText>
         </div>

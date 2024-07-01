@@ -122,7 +122,7 @@ function CodeSnippetPreview(props: CodeSnippetPreviewProps) {
         <div className="flex items-center">
           {props.onEdit && (
             <StyledHeaderButtonWithText
-              text="Edit"
+              text={t('edit')}
               onClick={(e) => {
                 e.stopPropagation();
                 e.preventDefault();
@@ -134,7 +134,7 @@ function CodeSnippetPreview(props: CodeSnippetPreviewProps) {
             </StyledHeaderButtonWithText>
           )}
           <HeaderButtonWithText
-            text="Delete"
+            text={t('delete')}
             onClick={(e) => {
               e.stopPropagation();
               props.onDelete();
