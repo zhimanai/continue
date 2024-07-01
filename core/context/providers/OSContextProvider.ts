@@ -8,12 +8,13 @@ import {
   ContextProviderExtras,
 } from "../../index.js";
 import { BaseContextProvider } from "../index.js";
+import { $t } from "../../config/i18n.js";
 
 class OSContextProvider extends BaseContextProvider {
   static description: ContextProviderDescription = {
     title: "OS",
     displayTitle: "OS",
-    description: "OS and CPU Information.",
+    description: $t('os-and-cpu-information'),
     type: "normal",
   };
 
@@ -25,8 +26,8 @@ class OSContextProvider extends BaseContextProvider {
     const platform = os.platform();
     return [
       {
-        description: "Your OS and CPU",
-        content: `I am running ${platform} on ${cpu}.`,
+        description: $t('your-os-and-cpu'),
+        content: $t('i-am-running-platform-on-cpu', {platform, cpu}),
         name: "OS",
       },
     ];

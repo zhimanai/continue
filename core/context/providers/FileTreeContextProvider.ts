@@ -1,3 +1,4 @@
+import { $t } from "../../config/i18n.js";
 import {
   ContextItem,
   ContextProviderDescription,
@@ -38,7 +39,7 @@ class FileTreeContextProvider extends BaseContextProvider {
   static description: ContextProviderDescription = {
     title: "tree",
     displayTitle: "File Tree",
-    description: "Attach a representation of the file tree",
+    description: $t('attach-a-representation-of-the-file-tree'),
     type: "normal",
   };
 
@@ -82,11 +83,11 @@ class FileTreeContextProvider extends BaseContextProvider {
 
     return [
       {
-        content: `Here is a file tree of the current workspace:\n\n${trees.join(
+        content: `${$t('here-is-a-file-tree-of-the-current-workspace')}:\n\n${trees.join(
           "\n\n",
         )}`,
         name: "File Tree",
-        description: "File Tree",
+        description: $t('file-tree'),
       },
     ];
   }

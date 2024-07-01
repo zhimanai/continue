@@ -1,3 +1,4 @@
+import { $t } from "../../config/i18n.js";
 import {
   ContextItem,
   ContextProviderDescription,
@@ -9,7 +10,7 @@ class HttpContextProvider extends BaseContextProvider {
   static description: ContextProviderDescription = {
     title: "http",
     displayTitle: "HTTP",
-    description: "Retrieve a context item from a custom server",
+    description: $t('retrieve-a-context-item-from-a-custom-server'),
     type: "normal",
   };
 

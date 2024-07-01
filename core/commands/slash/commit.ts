@@ -1,9 +1,10 @@
+import { $t } from "../../config/i18n.js";
 import { SlashCommand } from "../../index.js";
 import { stripImages } from "../../llm/countTokens.js";
 
 const CommitMessageCommand: SlashCommand = {
   name: "commit",
-  description: "Generate a commit message for current changes",
+  description: $t('generate-a-commit-message-for-current-changes'),
   run: async function* ({ ide, llm, input }) {
     const diff = await ide.getDiff();
 

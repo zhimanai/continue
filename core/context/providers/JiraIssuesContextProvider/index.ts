@@ -7,12 +7,13 @@ import {
 } from "../../../index.js";
 import { BaseContextProvider } from "../../index.js";
 import { JiraClient } from "./JiraClient.js";
+import { $t } from "../../../config/i18n.js";
 
 class JiraIssuesContextProvider extends BaseContextProvider {
   static description: ContextProviderDescription = {
     title: "jira",
     displayTitle: "Jira Issues",
-    description: "Reference Jira issues",
+    description: $t('reference-jira-issues'),
     type: "submenu",
   };
 

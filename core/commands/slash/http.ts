@@ -1,9 +1,10 @@
+import { $t } from "../../config/i18n.js";
 import { SlashCommand } from "../../index.js";
 import { removeQuotesAndEscapes } from "../../util/index.js";
 
 const HttpSlashCommand: SlashCommand = {
   name: "http",
-  description: "Call an HTTP endpoint to serve response",
+  description: $t('call-an-http-endpoint-to-serve-response'),
   run: async function* ({ ide, llm, input, params, fetch }) {
     const url = params?.url;
     if (!url) {

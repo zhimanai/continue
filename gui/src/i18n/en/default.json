@@ -230,5 +230,7 @@
   "delete": "Delete",
   "edit": "Edit",
   "reject": "Reject",
-  "accept": "Accept"
+  "accept": "Accept",
+  "context-used": "Context Used",
+  "no-results": "No results"
 }

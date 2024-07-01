@@ -1,3 +1,4 @@
+import { $t } from "../../config/i18n.js";
 import { ChatMessage, SlashCommand } from "../../index.js";
 import { stripImages } from "../../llm/countTokens.js";
 import { removeQuotesAndEscapes } from "../../util/index.js";
@@ -23,7 +24,7 @@ Body:\n\n`;
 
 const DraftIssueCommand: SlashCommand = {
   name: "issue",
-  description: "Draft a GitHub issue",
+  description: $t('draft-a-github-issue'),
   run: async function* ({ input, llm, history, params }) {
     if (params?.repositoryUrl === undefined) {
       yield "This command requires a repository URL to be set in the config file.";

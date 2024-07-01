@@ -1,3 +1,4 @@
+import { $t } from "../../config/i18n.js";
 import {
   ContextItem,
   ContextProviderDescription,
@@ -11,7 +12,7 @@ class GitHubIssuesContextProvider extends BaseContextProvider {
   static description: ContextProviderDescription = {
     title: "issue",
     displayTitle: "GitHub Issues",
-    description: "Reference GitHub issues",
+    description: $t('reference-github-issues'),
     type: "submenu",
   };
 

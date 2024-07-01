@@ -1,3 +1,4 @@
+import { $t } from "../../config/i18n.js";
 import {
   ContextItem,
   ContextProviderDescription,
@@ -11,7 +12,7 @@ class LocalsProvider extends BaseContextProvider {
   static description: ContextProviderDescription = {
     title: "locals",
     displayTitle: "Locals",
-    description: "Reference the contents of the local variables",
+    description: $t('reference-the-contents-of-the-local-variables'),
     type: "submenu",
   };
 
@@ -36,7 +37,7 @@ class LocalsProvider extends BaseContextProvider {
     );
     return [
       {
-        description: "The value, name and possibly type of the local variables",
+        description: $t('the-value-name-and-possibly-type-of-the-local-variables'),
         content:
           `This is a paused thread: ${thread?.name}\n` +
           `Current local variable contents: \n${localVariables}.\n` +

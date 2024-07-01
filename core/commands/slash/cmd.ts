@@ -1,10 +1,11 @@
+import { $t } from "../../config/i18n.js";
 import { streamLines } from "../../diff/util.js";
 import { SlashCommand } from "../../index.js";
 import { removeQuotesAndEscapes } from "../../util/index.js";
 
 const GenerateTerminalCommand: SlashCommand = {
   name: "cmd",
-  description: "Generate a shell command",
+  description: $t('generate-a-shell-command'),
   run: async function* ({ ide, llm, input }) {
     const gen =
       llm.streamComplete(`The user has made a request to run a shell command. Their description of what it should do is:

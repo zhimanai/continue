@@ -1,3 +1,4 @@
+import { $t } from "../../config/i18n.js";
 import { ChatMessageRole, FetchFunction, SlashCommand } from "../../index.js";
 import { pruneStringFromBottom, stripImages } from "../../llm/countTokens.js";
 
@@ -62,7 +63,7 @@ ${answer}
 
 const StackOverflowSlashCommand: SlashCommand = {
   name: "so",
-  description: "Search Stack Overflow",
+  description: $t('search-stack-overflow'),
   run: async function* ({ llm, input, addContextItem, history, fetch }) {
     const contextLength = llm.contextLength;
 
@@ -96,7 +97,7 @@ const StackOverflowSlashCommand: SlashCommand = {
 
       addContextItem({
         content: sources[sources.length - 1],
-        description: "StackOverflow Answer",
+        description: $t('stackoverflow-answer'),
         name: `StackOverflow ${sources.length}`,
         id: {
           providerTitle: "so",

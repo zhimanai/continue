@@ -5,6 +5,7 @@ import * as path from "path";
 import { defaultConfig, defaultConfigJetBrains } from "../config/default.js";
 import Types from "../config/types.js";
 import { IdeType, SerializedContinueConfig } from "../index.js";
+import { $t } from "../config/i18n.js";
 
 export function getContinueGlobalPath(): string {
   // This is ~/.continue on mac/linux
@@ -85,7 +86,7 @@ export function getConfigTsPath(): string {
       JSON.stringify({
         name: "continue-config",
         version: "1.0.0",
-        description: "My Continue Configuration",
+        description: $t('my-continue-configuration'),
         main: "config.js",
       }),
     );

@@ -1,3 +1,4 @@
+import { $t } from "../../config/i18n.js";
 import {
   ContextItem,
   ContextProviderDescription,
@@ -10,7 +11,7 @@ class ProblemsContextProvider extends BaseContextProvider {
   static description: ContextProviderDescription = {
     title: "problems",
     displayTitle: "Problems",
-    description: "Reference problems in the current file",
+    description: $t('reference-problems-in-the-current-file'),
     type: "normal",
   };
 
@@ -33,7 +34,7 @@ class ProblemsContextProvider extends BaseContextProvider {
           .join("\n");
 
         return {
-          description: "Problems in current file",
+          description: $t('problems-in-current-file'),
           content: `\`\`\`${getBasename(
             problem.filepath,
           )}\n${rangeContent}\n\`\`\`\n${problem.message}\n\n`,
@@ -45,8 +46,8 @@ class ProblemsContextProvider extends BaseContextProvider {
     return items.length === 0
       ? [
           {
-            description: "Problems in current file",
-            content: "There are no problems found in the open file.",
+            description: $t('problems-in-current-file'),
+            content: $t('there-are-no-problems-found-in-the-open-file'),
             name: "No problems found",
           },
         ]

@@ -230,5 +230,7 @@
   "delete": "删除",
   "edit": "编辑",
   "reject": "拒绝",
-  "accept": "接受"
+  "accept": "接受",
+  "context-used": "使用的上下文",
+  "no-results": "没有结果"
 }

@@ -1,3 +1,4 @@
+import { $t } from "../../config/i18n.js";
 import {
   BranchAndDir,
   Chunk,
@@ -159,9 +160,9 @@ export async function retrieveContextItemsFromEmbeddings(
     }),
     {
       name: "Instructions",
-      description: "Instructions",
+      description: $t('instructions'),
       content:
-        "Use the above code to answer the following question. You should not reference any files outside of what is shown, unless they are commonly known files, like a .gitignore or package.json. Reference the filenames whenever possible. If there isn't enough information to answer the question, suggest where the user might look to learn more.",
+        $t('use-the-above-code-to-answer-the-following-question-you-should-not-reference-any-files-outside-of-what-is-shown-unless-they-are-commonly-known-files-like-a-gitignore-or-package-json-reference-the-filenames-whenever-possible-if-there-isnt-enough-information-to-answer-the-question-suggest-where-the-user-might-look-to-learn-more'),
     },
   ];
 }

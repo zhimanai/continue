@@ -1,3 +1,4 @@
+import { $t } from "../../config/i18n.js";
 import {
   ContextItem,
   ContextProviderDescription,
@@ -9,7 +10,7 @@ class SearchContextProvider extends BaseContextProvider {
   static description: ContextProviderDescription = {
     title: "search",
     displayTitle: "Search",
-    description: "Use ripgrep to exact search the workspace",
+    description: $t('use-ripgrep-to-exact-search-the-workspace'),
     type: "query",
   };
 
@@ -20,8 +21,8 @@ class SearchContextProvider extends BaseContextProvider {
     const results = await extras.ide.getSearchResults(query);
     return [
       {
-        description: "Search results",
-        content: `Results of searching codebase for "${query}":\n\n${results}`,
+        description: $t('search-results'),
+        content: $t('results-of-searching-codebase-for-query-n-n-results', {query, results}),
         name: "Search results",
       },
     ];

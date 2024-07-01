@@ -1,3 +1,4 @@
+import { $t } from "../../config/i18n.js";
 import {
   ContextItem,
   ContextProviderDescription,
@@ -11,7 +12,7 @@ class PostgresContextProvider extends BaseContextProvider {
   static description: ContextProviderDescription = {
     title: "postgres",
     displayTitle: "PostgreSQL",
-    description: "Retrieve PostgreSQL table schema and sample rows",
+    description: $t('retrieve-postgresql-table-schema-and-sample-rows'),
     type: "submenu",
   };
 

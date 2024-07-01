@@ -1,3 +1,4 @@
+import { $t } from "../../config/i18n.js";
 import {
   ContextItem,
   ContextProviderDescription,
@@ -10,7 +11,7 @@ class OpenFilesContextProvider extends BaseContextProvider {
   static description: ContextProviderDescription = {
     title: "open",
     displayTitle: "Open Files",
-    description: "Reference the current open files",
+    description: $t('reference-the-current-open-files'),
     type: "normal",
   };
 

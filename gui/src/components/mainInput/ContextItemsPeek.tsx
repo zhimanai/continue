@@ -97,7 +97,7 @@ const ContextItemsPeek = (props: ContextItemsPeekProps) => {
             style={{ color: lightGray }}
           ></ChevronDownIcon>
         )}
-        Context Used
+        {t('context-used')}
       </div>
       {open && (
         <div

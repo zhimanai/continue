@@ -1,3 +1,4 @@
+import { $t } from "../../config/i18n.js";
 import {
   ContextItem,
   ContextProviderDescription,
@@ -10,7 +11,7 @@ class CodebaseContextProvider extends BaseContextProvider {
   static description: ContextProviderDescription = {
     title: "codebase",
     displayTitle: "Codebase",
-    description: "Automatically find relevant files",
+    description: $t('automatically-find-relevant-files'),
     type: "normal",
     renderInlineAs: "",
   };

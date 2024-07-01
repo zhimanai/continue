@@ -1,3 +1,4 @@
+import { $t } from "../../config/i18n.js";
 import { ChatMessage, PromptTemplate } from "../../index.js";
 
 const simplifiedEditPrompt = `Consider the following code:
@@ -99,7 +100,7 @@ Please rewrite the entire code block above in order to satisfy the following req
       },
       {
         role: "assistant",
-        content: `Sure! Here's the entire rewritten code block:
+        content: `${$t('sure-heres-the-entire-rewritten-code-block')}
 \`\`\`${otherData.language}
 `,
       },
@@ -120,7 +121,7 @@ Please rewrite the entire code block above, editing the portion below "${START_T
     },
     {
       role: "assistant",
-      content: `Sure! Here's the entire code block, including the rewritten portion:
+      content: `${$t('sure-heres-the-entire-code-block-including-the-rewritten-portion')}
 \`\`\`${otherData.language}
 ${otherData.prefix}${START_TAG}
 `,
@@ -254,7 +255,7 @@ Output only a code block with the rewritten code:
   },
   {
     role: "assistant",
-    content: `Sure! Here is the rewritten code:
+    content: `${$t('sure-here-is-the-rewritten-code')}
 \`\`\`${otherData.language}`,
   },
 ];

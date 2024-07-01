@@ -1,3 +1,4 @@
+import { $t } from "../../config/i18n.js";
 import {
   ContextItem,
   ContextProviderDescription,
@@ -11,7 +12,7 @@ class DatabaseContextProvider extends BaseContextProvider {
   static description: ContextProviderDescription = {
     title: "database",
     displayTitle: "Database",
-    description: "Table schemas",
+    description: $t('table-schemas'),
     type: "submenu",
   };
 
@@ -47,7 +48,7 @@ class DatabaseContextProvider extends BaseContextProvider {
 
           const contextItem = {
             name: `${connectionName}-all-tables-schemas`,
-            description: "Schema for all tables.",
+            description: $t('schema-for-all-tables'),
             content: prompt,
           };
 

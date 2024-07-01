@@ -7,12 +7,13 @@ import {
   ContextProviderDescription,
   ContextProviderExtras,
 } from "../../index.js";
+import { $t } from "../../config/i18n.js";
 
 class URLContextProvider extends BaseContextProvider {
   static description: ContextProviderDescription = {
     title: "url",
     displayTitle: "URL",
-    description: "Reference a webpage at a given URL",
+    description: $t('reference-a-webpage-at-a-given-url'),
     type: "query",
   };
 

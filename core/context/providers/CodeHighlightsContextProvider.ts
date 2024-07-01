@@ -5,6 +5,7 @@ import {
 } from "../../index.js";
 import { getBasename } from "../../util/index.js";
 import { BaseContextProvider } from "../index.js";
+import { $t } from "../../config/i18n.js";
 
 // import { getHighlightsThatFit, ILLMContextSizer } from "llm-code-highlighter/dist/index.continue";
 
@@ -14,7 +15,7 @@ class CodeHighlightsContextProvider extends BaseContextProvider {
   static description: ContextProviderDescription = {
     title: "highlights",
     displayTitle: "Highlights",
-    description: "Code highlights from open files",
+    description: $t('code-highlights-from-open-files'),
     type: "normal",
   };
 

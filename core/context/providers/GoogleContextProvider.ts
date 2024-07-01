@@ -1,3 +1,4 @@
+import { $t } from "../../config/i18n.js";
 import {
   ContextItem,
   ContextProviderDescription,
@@ -9,7 +10,7 @@ class GoogleContextProvider extends BaseContextProvider {
   static description: ContextProviderDescription = {
     title: "google",
     displayTitle: "Google",
-    description: "Attach the results of a Google search",
+    description: $t('attach-the-results-of-a-google-search'),
     type: "query",
   };
 
@@ -56,7 +57,7 @@ class GoogleContextProvider extends BaseContextProvider {
       {
         content,
         name: "Google Search",
-        description: "Google Search",
+        description: $t('google-search'),
       },
     ];
   }

@@ -1,3 +1,4 @@
+import { $t } from "../../config/i18n.js";
 import {
   ContextItem,
   ContextProviderDescription,
@@ -10,7 +11,7 @@ class CurrentFileContextProvider extends BaseContextProvider {
   static description: ContextProviderDescription = {
     title: "currentFile",
     displayTitle: "Current File",
-    description: "Reference the currently open file",
+    description: $t('reference-the-currently-open-file'),
     type: "normal",
   };
 
@@ -27,9 +28,7 @@ class CurrentFileContextProvider extends BaseContextProvider {
     return [
       {
         description: currentFile,
-        content: `This is the currently open file:\n\n\`\`\`${getBasename(
-          currentFile,
-        )}\n${contents}\n\`\`\``,
+        content: $t('this-is-the-currently-open-file-n-n-getbasename-currentfile-n-contents-n', {currentFile: getBasename( currentFile, ), contents}),
         name: getBasename(currentFile),
       },
     ];

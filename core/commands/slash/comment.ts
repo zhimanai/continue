@@ -1,14 +1,15 @@
+import { $t } from "../../config/i18n.js";
 import { SlashCommand } from "../../index.js";
 import EditSlashCommand from "./edit.js";
 
 const CommentSlashCommand: SlashCommand = {
   name: "comment",
-  description: "Write comments for highlighted code",
+  description: $t('write-comments-for-highlighted-code'),
   run: async function* (sdk) {
     for await (const update of EditSlashCommand.run({
       ...sdk,
       input:
-        "Write comments for this code. Do not change anything about the code itself.",
+        $t('write-comments-for-this-code-do-not-change-anything-about-the-code-itself'),
     })) {
       yield update;
     }

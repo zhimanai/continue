@@ -6,6 +6,7 @@ import {
   stopAtLines,
   streamWithNewLines,
 } from "../../autocomplete/lineStream.js";
+import { $t } from "../../config/i18n.js";
 import { streamLines } from "../../diff/util.js";
 import { ContextItemWithId, ILLM, SlashCommand } from "../../index.js";
 import { stripImages } from "../../llm/countTokens.js";
@@ -216,7 +217,7 @@ function lineToBeIgnored(line: string, isFirstLine = false): boolean {
 
 const EditSlashCommand: SlashCommand = {
   name: "edit",
-  description: "Edit selected code",
+  description: $t('edit-selected-code'),
   run: async function* ({ ide, llm, input, history, contextItems, params }) {
     let contextItemToEdit = contextItems.find(
       (item: ContextItemWithId) =>

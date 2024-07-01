@@ -1,3 +1,4 @@
+import { $t } from "../../config/i18n.js";
 import {
   ContextItem,
   ContextProviderDescription,
@@ -12,7 +13,7 @@ class CodeOutlineContextProvider extends BaseContextProvider {
   static description: ContextProviderDescription = {
     title: "outline",
     displayTitle: "Outline",
-    description: "Definition lines only (from open files)",
+    description: $t('definition-lines-only-from-open-files'),
     type: "normal",
   };
 

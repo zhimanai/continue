@@ -1,3 +1,4 @@
+import { $t } from "../../config/i18n.js";
 import {
   ContextItem,
   ContextProviderDescription,
@@ -12,7 +13,7 @@ class FileContextProvider extends BaseContextProvider {
   static description: ContextProviderDescription = {
     title: "file",
     displayTitle: "Files",
-    description: "Type to search",
+    description: $t('type-to-search'),
     type: "submenu",
   };
 

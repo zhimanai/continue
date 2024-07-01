@@ -1,3 +1,4 @@
+import { $t } from "../../config/i18n.js";
 import {
   ContextItem,
   ContextProviderDescription,
@@ -9,7 +10,7 @@ class TerminalContextProvider extends BaseContextProvider {
   static description: ContextProviderDescription = {
     title: "terminal",
     displayTitle: "Terminal",
-    description: "Reference the contents of the terminal",
+    description: $t('reference-the-contents-of-the-terminal'),
     type: "normal",
   };
 
@@ -20,8 +21,8 @@ class TerminalContextProvider extends BaseContextProvider {
     const content = await extras.ide.getTerminalContents();
     return [
       {
-        description: "The contents of the terminal",
-        content: `Current terminal contents:\n\n${content}`,
+        description: $t('the-contents-of-the-terminal'),
+        content: `${$t('current-terminal-contents')}\n\n${content}`,
         name: "Terminal",
       },
     ];

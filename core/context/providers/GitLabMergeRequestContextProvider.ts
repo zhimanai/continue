@@ -5,6 +5,7 @@ import {
   ContextProviderExtras,
 } from "../../index.js";
 import { BaseContextProvider } from "../index.js";
+import { $t } from "../../config/i18n.js";
 
 interface RemoteBranchInfo {
   branch: string | null;
@@ -73,7 +74,7 @@ class GitLabMergeRequestContextProvider extends BaseContextProvider {
   static description: ContextProviderDescription = {
     title: "gitlab-mr",
     displayTitle: "GitLab Merge Request",
-    description: "Reference comments in a GitLab Merge Request",
+    description: $t('reference-comments-in-a-gitlab-merge-request'),
     type: "normal",
   };
 
@@ -261,7 +262,7 @@ class GitLabMergeRequestContextProvider extends BaseContextProvider {
         result.push({
           name: mergeRequest.title,
           content,
-          description: "Comments from the Merge Request for this branch.",
+          description: $t('comments-from-the-merge-request-for-this-branch'),
         });
       }
     } catch (ex) {
@@ -283,7 +284,7 @@ class GitLabMergeRequestContextProvider extends BaseContextProvider {
       result.push({
         name: "GitLab Merge Request",
         content,
-        description: "Error getting the Merge Request for this branch.",
+        description: $t('error-getting-the-merge-request-for-this-branch'),
       });
     }
 

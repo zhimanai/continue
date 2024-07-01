@@ -4,6 +4,7 @@ import path from "path";
 import { languageForFilepath } from "../../autocomplete/constructPrompt.js";
 import { SlashCommand } from "../../index.js";
 import { stripImages } from "../../llm/countTokens.js";
+import { $t } from "../../config/i18n.js";
 
 // If useful elsewhere, helper funcs should move to core/util/index.ts or similar
 function getOffsetDatetime(date: Date): Date {
@@ -37,7 +38,7 @@ function reformatCodeBlocks(msgText: string): string {
 
 const ShareSlashCommand: SlashCommand = {
   name: "share",
-  description: "Export the current chat session to markdown",
+  description: $t('export-the-current-chat-session-to-markdown'),
   run: async function* ({ ide, history, params }) {
     const now = new Date();
 

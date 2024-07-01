@@ -173,7 +173,7 @@ const MentionList = forwardRef((props: MentionListProps, ref) => {
 
   useEffect(() => {
     const items = [...props.items];
-    if (subMenuTitle === "Type to search docs") {
+    if (subMenuTitle === "输入查询文档") {
       items.push({
         title: t('add-docs'),
         type: "action",
@@ -366,7 +366,7 @@ const MentionList = forwardRef((props: MentionListProps, ref) => {
               </ItemDiv>
             ))
           ) : (
-            <ItemDiv className="item">No results</ItemDiv>
+            <ItemDiv className="item">{t('no-results')}</ItemDiv>
           )}
           {/* </CustomScrollbarDiv> */}
         </>

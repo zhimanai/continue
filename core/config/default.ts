@@ -2,6 +2,7 @@ import {
   ContextProviderWithParams,
   SerializedContinueConfig,
 } from "../index.js";
+import { $t } from "./i18n.js";
 
 export const defaultConfig: SerializedContinueConfig = {
   models: [
@@ -30,7 +31,7 @@ export const defaultConfig: SerializedContinueConfig = {
       name: "test",
       prompt:
         "{{{ input }}}\n\nWrite a comprehensive set of unit tests for the selected code. It should setup, run tests that check for correctness including important edge cases, and teardown. Ensure that the tests are complete and sophisticated. Give the tests just as chat output, don't edit any file.",
-      description: "Write unit tests for highlighted code",
+      description: $t('write-unit-tests-for-highlighted-code'),
     },
   ],
   tabAutocompleteModel: {
@@ -67,7 +68,7 @@ export const defaultConfigJetBrains: SerializedContinueConfig = {
       name: "test",
       prompt:
         "{{{ input }}}\n\nWrite a comprehensive set of unit tests for the selected code. It should setup, run tests that check for correctness including important edge cases, and teardown. Ensure that the tests are complete and sophisticated. Give the tests just as chat output, don't edit any file.",
-      description: "Write unit tests for highlighted code",
+      description: $t('write-unit-tests-for-highlighted-code'),
     },
   ],
   tabAutocompleteModel: {
@@ -80,34 +81,34 @@ export const defaultConfigJetBrains: SerializedContinueConfig = {
 export const defaultSlashCommandsVscode = [
   {
     name: "edit",
-    description: "Edit selected code",
+    description: $t('edit-selected-code'),
   },
   {
     name: "comment",
-    description: "Write comments for the selected code",
+    description: $t('write-comments-for-the-selected-code'),
   },
   {
     name: "share",
-    description: "Export the current chat session to markdown",
+    description: $t('export-the-current-chat-session-to-markdown'),
   },
   {
     name: "cmd",
-    description: "Generate a shell command",
+    description: $t('generate-a-shell-command'),
   },
 ];
 
 export const defaultSlashCommandsJetBrains = [
   {
     name: "edit",
-    description: "Edit selected code",
+    description: $t('edit-selected-code'),
   },
   {
     name: "comment",
-    description: "Write comments for the selected code",
+    description: $t('write-comments-for-the-selected-code'),
   },
   {
     name: "share",
-    description: "Export the current chat session to markdown",
+    description: $t('export-the-current-chat-session-to-markdown'),
   },
 ];
 

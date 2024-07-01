@@ -1,3 +1,4 @@
+import { $t } from "../../config/i18n.js";
 import {
   ContextItem,
   ContextProviderDescription,
@@ -9,7 +10,7 @@ class DiffContextProvider extends BaseContextProvider {
   static description: ContextProviderDescription = {
     title: "diff",
     displayTitle: "Git Diff",
-    description: "Reference the current git diff",
+    description: $t('reference-the-current-git-diff'),
     type: "normal",
   };
 
@@ -20,7 +21,7 @@ class DiffContextProvider extends BaseContextProvider {
     const diff = await extras.ide.getDiff();
     return [
       {
-        description: "The current git diff",
+        description: $t('the-current-git-diff'),
         content:
           diff.trim() === ""
             ? "Git shows no current changes."

@@ -1,3 +1,4 @@
+import { $t } from "../../config/i18n.js";
 import { ChatMessage, SlashCommand } from "../../index.js";
 import { stripImages } from "../../llm/countTokens.js";
 
@@ -37,7 +38,7 @@ function getLastUserHistory(history: ChatMessage[]): string {
 
 const ReviewMessageCommand: SlashCommand = {
   name: "review",
-  description: "Review code and give feedback",
+  description: $t('review-code-and-give-feedback'),
   run: async function* ({ llm, history }) {
     const reviewText = getLastUserHistory(history).replace("\\review", "");
 
